@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Plant } from '../app/models';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class ApiService {
 
   private apiUrl:string ="api/v1"
 
-  public getPlant(common_name: string): Observable<Plant> {
-    return this.http.get<Plant>(this.apiUrl+'/plants?token=7OsJxKqb97ZVo_yNHR11KHoX1hJ78GnSpwQLsl8Ta9M&filter%5Bcommon_name%5D='+common_name, {responseType: 'json'});
+  public getPlant(common_name: string): Observable<Plant[]> {
+    return this.http.get<{data: Plant[]}>(this.apiUrl+'/plants?token=7OsJxKqb97ZVo_yNHR11KHoX1hJ78GnSpwQLsl8Ta9M&filter%5Bcommon_name%5D='+common_name, {responseType: 'json'}).pipe(map(response => response.data));;
   }
 
 }

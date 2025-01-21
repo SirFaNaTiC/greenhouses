@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Plant } from './models';
 import { ApiService } from '../services/api.service';
+import { Plant } from './models';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,14 @@ import { ApiService } from '../services/api.service';
 export class AppComponent implements OnInit{
   title = 'greenhouses';
 
-  public myPlant?: Plant;
+  public myPlant?: Plant[];
 
   constructor(private api: ApiService) {}
   
   public ngOnInit() {
     this.api.getPlant("beach strawberry").subscribe((plt) => {
       this.myPlant = plt
+      console.log(this.myPlant);
     });
   }
 }
