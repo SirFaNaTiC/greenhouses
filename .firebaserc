@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "greenhouses-22f8b": {
+      "hosting": {
+        "greenhouses": [
+          "greenhouses-22f8b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "greenhouses-22f8b"
+  }
+}

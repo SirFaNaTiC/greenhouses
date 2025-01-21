@@ -64,6 +64,9 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -98,6 +101,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "greenhouses:build:production",
+              "serveTarget": "greenhouses:serve:production"
+            },
+            "development": {
+              "buildTarget": "greenhouses:build:development",
+              "serveTarget": "greenhouses:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

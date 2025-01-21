@@ -12,13 +12,11 @@ export class AppComponent implements OnInit{
 
   public myPlant?: Plant;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private api: ApiService) {}
   
   public ngOnInit() {
-    console.log("test")
-    this.apiService.getPlantes().subscribe((plt) => {
-      this.myPlant = plt;
-      console.log(plt);
+    this.api.getPlant("beach strawberry").subscribe((plt) => {
+      this.myPlant = plt
     });
   }
 }
