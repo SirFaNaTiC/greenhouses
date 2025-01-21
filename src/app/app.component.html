@@ -1,8 +1,10 @@
 <div>
-  <h2>Liste des plantes :</h2>
+  Les infomations sur la plante sont :
   <ul>
     <li *ngFor="let plant of myPlant">
-      {{ plant.common_name }}
+      <div>Nom :{{ plant.common_name }}</div>
+      <div>Id :{{ plant.id }} </div>
+      <div>Nom scientifique :{{ plant.scientific_name }}</div>
     </li>
   </ul>
 </div>
