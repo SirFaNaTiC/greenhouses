@@ -6,9 +6,16 @@
           "greenhouses-22f8b"
         ]
       }
+    },
+    "greenhouses-efa9b": {
+      "hosting": {
+        "greenhouses": [
+          "greenhouses-efa9b"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "greenhouses-22f8b"
+    "default": "greenhouses-efa9b"
   }
 }
