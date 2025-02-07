@@ -7,5 +7,13 @@
       <div>Nom scientifique :{{ plant.scientific_name }}</div>
     </li>
   </ul>
+  <form>
+    <label>Email :</label>
+    <input type="email" [(ngModel)]="email" name="nom">
+    <br>
+    <label>Password :</label>
+    <input type="text" [(ngModel)]="password" name="email">
+    <br>
+    <button type="submit" (click)="createUser(email, password)">Soumettre</button>
+  </form>
 </div>
-<button (click)="createUser()"></button>

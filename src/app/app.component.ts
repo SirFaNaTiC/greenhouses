@@ -12,7 +12,8 @@ export class AppComponent implements OnInit{
   title = 'greenhouses';
 
   public myPlant?: Plant[];
-
+  public email:string="";
+  public password:string="";
   private auth = inject(Auth);
 
   constructor(private api: ApiService) {}
@@ -25,8 +26,8 @@ export class AppComponent implements OnInit{
     });
   }
 
-  public createUser() {
-    createUserWithEmailAndPassword(this.auth, "toto@gmail.com", "123456ab")
+  public createUser(email:string, password:string) {
+    createUserWithEmailAndPassword(this.auth, email, password)
     .then((userCredential) => {
       console.log("afficher user");
       const user = userCredential.user;
