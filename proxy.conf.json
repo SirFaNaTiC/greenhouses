@@ -1,7 +1,0 @@
-{
-    "/api": {
-        "target": "https://trefle.io",
-        "secure": false,
-        "changeOrigin": true
-    }
-}
