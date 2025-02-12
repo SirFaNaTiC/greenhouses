@@ -8,14 +8,20 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { ConnectionComponent } from './connection/connection.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { provideRouter, RouterOutlet } from '@angular/router';
+import { LandingpagesComponent } from './landingpages/landingpages.component';
+import { routes } from './app.config';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    RouterOutlet,
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'greenhouses-22f8b',
@@ -29,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
    ],
-  providers: [],
+  providers: [
+    provideRouter(routes),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
