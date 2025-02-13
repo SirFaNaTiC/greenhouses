@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Plant } from './models';
-import { Auth, authState, User } from '@angular/fire/auth';
+import { Auth, authState, getAuth, User } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
   public ngOnInit() {
     this.authStateSubscription = this.authState$.subscribe((aUser: User | null) => {
       console.log(aUser);
-  })
+    });
     this.api.getPlant("beach strawberry").subscribe((plt) => {
       this.myPlant = plt
       console.log(this.myPlant);
