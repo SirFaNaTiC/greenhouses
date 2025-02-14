@@ -15,6 +15,7 @@ import { LandingpagesComponent } from './landingpages/landingpages.component';
 import { routes } from './app.config';
 import { HeaderComponent } from './header/header.component';
 import {MatCardModule} from '@angular/material/card';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, HeaderComponent],
@@ -40,6 +41,7 @@ import {MatCardModule} from '@angular/material/card';
    ],
   providers: [
     provideRouter(routes),
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],
 })
