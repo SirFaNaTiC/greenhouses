@@ -13,15 +13,18 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { LandingpagesComponent } from './landingpages/landingpages.component';
 import { routes } from './app.config';
+import { HeaderComponent } from './header/header.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     RouterOutlet,
+    MatCardModule,
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'greenhouses-22f8b',
