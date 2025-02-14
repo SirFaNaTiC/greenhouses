@@ -1,7 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Plant } from './models';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, authState, getAuth, User } from '@angular/fire/auth';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,31 +13,19 @@ export class AppComponent implements OnInit{
   title = 'greenhouses';
 
   public myPlant?: Plant[];
-  public email:string="";
-  public password:string="";
   private auth = inject(Auth);
+  authState$ = authState(this.auth);
+  authStateSubscription?: Subscription ;
 
   constructor(private api: ApiService) {}
   
   public ngOnInit() {
-    
+    this.authStateSubscription = this.authState$.subscribe((aUser: User | null) => {
+      console.log(aUser);
+    });
     this.api.getPlant("beach strawberry").subscribe((plt) => {
       this.myPlant = plt
       console.log(this.myPlant);
-    });
-  }
-
-  public createUser(email:string, password:string) {
-    createUserWithEmailAndPassword(this.auth, email, password)
-    .then((userCredential) => {
-      console.log("afficher user");
-      const user = userCredential.user;
-      console.log(user);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode,errorMessage);
     });
   }
 
