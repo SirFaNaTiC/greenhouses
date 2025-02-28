@@ -13,15 +13,19 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { LandingpagesComponent } from './landingpages/landingpages.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { HeaderComponent } from './header/header.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     RouterOutlet,
+    MatCardModule,
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'greenhouses-22f8b',
@@ -36,6 +40,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     provideFirestore(() => getFirestore())
    ],
   providers: [
+  
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],
 })
