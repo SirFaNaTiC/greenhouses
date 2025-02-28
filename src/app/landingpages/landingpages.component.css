@@ -1,0 +1,31 @@
+.background {
+    background-image: url('https://www.willemsefrance.fr/cdn/shop/files/banniere_Conseils_pour_choisir_les_arbres_adaptes4_ecd278e8-4f85-43b6-8243-e4de8683d0d1.jpg?v=1734075692&width=1500');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Taille et alignement */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Pour occuper toute la hauteur de l'écran */
+    padding: 20px;
+}
+
+/* Style des boutons */
+.background button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #28a745; /* Vert agréable */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.background button:hover {
+    background-color: #218838; /* Assombrit légèrement au survol */
+}
