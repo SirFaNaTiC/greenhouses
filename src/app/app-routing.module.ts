@@ -12,8 +12,9 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['inscription']
 const routes: Routes = [
   { path: 'connection', component: ConnectionComponent, ...canActivate(redirectLoggedInToItems) },
   { path: 'inscription' , component: InscriptionComponent, ...canActivate(redirectLoggedInToItems)},
-  { path: '**', component: LandingpagesComponent},
-  { path: 'main-page', component: MainPageComponent, ...canActivate(redirectUnauthorizedToLogin)}
+  { path: '', component: LandingpagesComponent},
+  { path: 'main-page', component: MainPageComponent, ...canActivate(redirectUnauthorizedToLogin)},
+  { path: 'landingpages', component: LandingpagesComponent, ...canActivate(redirectLoggedInToItems)}
 ];
 
 @NgModule({
@@ -21,4 +22,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+}

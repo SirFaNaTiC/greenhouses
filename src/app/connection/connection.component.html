@@ -5,6 +5,7 @@
     <label>Password :</label>
     <input type="text" [(ngModel)]="password" name="email">
     <br>
-    <button type="submit" (click)="verifyuser(email, password)" routerLink="" >se connecter</button>
+    <button type="submit" (click)="connection(email, password)">Se connecter</button>
 </form>
-<button routerLink="/main-page">Page d'accueil</button>
+{{message}}<br>
+<button [routerLink]="'/inscription'">Inscription</button>
