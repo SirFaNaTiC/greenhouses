@@ -1,0 +1,128 @@
+
+/* Style général du formulaire */
+form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    padding-right: 50px;
+    padding-left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+
+/* Effet de feuillage en arrière-plan */
+form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #8ab77480 0%, #6b8e2320 100%);
+    z-index: -1;
+    border-radius: 15px;
+}
+
+/* Style des labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c5530;
+    font-weight: 600;
+    font-size: 1.1em;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Style des inputs */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #a8c6a1;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    font-size: 1em;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4a7c59;
+    box-shadow: 0 0 8px rgba(74, 124, 89, 0.3);
+    background-color: white;
+}
+
+/* Style du placeholder */
+::placeholder {
+    color: #999;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* Style du bouton de connexion */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #4a7c59, #6b8e23);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(to right, #3d6548, #5c7a1e);
+    transform: translateY(-2px);
+}
+
+/* Style du bouton Page d'accueil */
+button[routerLink] {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #8ab774;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+button[routerLink]:hover {
+    background-color: #7aa065;
+    transform: translateY(-2px);
+}
+
+.login-container {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: -1;
+}
+

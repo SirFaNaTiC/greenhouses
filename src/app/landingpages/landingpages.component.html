@@ -1,11 +1,34 @@
-L'utilisateur connecté est affiché dans la console 
+<header>
+    <P>Bienvenue sur Greenhouse</P>
+</header>
 
-<div *ngIf="isLoggedIn; else loggeOut">
-    <div><button (click)="logOut()">Déconnexion</button></div>
-</div>
-
-<ng-template #loggeOut>
-    <div><button [routerLink]="'/connection'">Connexion</button></div>
-</ng-template>
-
-<div><button [routerLink]="'/inscription'">Inscription</button></div>
+<body>
+    <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Greenhouse</mat-card-title>
+          <mat-card-subtitle>Vos serres</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="mesboutons">
+            <div><button [routerLink]="'/inscription'">Inscription</button></div>
+            <ng-template #loggeOut>
+              <div><button [routerLink]="'/connection'">Connexion</button></div>
+            </ng-template>
+            <div *ngIf="isLoggedIn; else loggeOut">
+              <div><button (click)="logOut()">Déconnexion</button></div>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    
+</body>
+>>>>>>> Stashed changes
