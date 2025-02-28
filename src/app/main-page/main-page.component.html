@@ -1,1 +1,5 @@
 <p>main-page works!</p>
+
+<div *ngIf="isLoggedIn">
+    <div><button (click)="logOut()">Déconnexion</button></div>
+</div>
