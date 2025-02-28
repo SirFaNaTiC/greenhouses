@@ -12,7 +12,6 @@ import { ConnectionComponent } from './connection/connection.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { LandingpagesComponent } from './landingpages/landingpages.component';
-import { routes } from './app.config';
 
 @NgModule({
   declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent],
@@ -36,7 +35,6 @@ import { routes } from './app.config';
     provideFirestore(() => getFirestore())
    ],
   providers: [
-    provideRouter(routes),
   ],
   bootstrap: [AppComponent],
 })
