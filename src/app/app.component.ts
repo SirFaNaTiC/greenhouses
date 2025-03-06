@@ -25,6 +25,22 @@ export class AppComponent implements OnInit{
     });
     this.api.getPlant("beach strawberry").subscribe((plt) => {
       this.myPlant = plt
+      console.log("LOG 1");
+      console.log(this.myPlant);
+    });
+    this.api.getPlantByScientificName("Senecio gamolepis").subscribe((plt) => {
+      this.myPlant = plt
+      console.log("LOG 2");
+      console.log(this.myPlant);
+    });
+    this.api.getPlantByID(9511).subscribe((plt) => {
+      this.myPlant = plt
+      console.log("LOG 3");
+      console.log(this.myPlant);
+    });
+    this.api.getPlantAll().subscribe((plt) => {
+      this.myPlant = plt
+      console.log("LOG 4");
       console.log(this.myPlant);
     });
   }
