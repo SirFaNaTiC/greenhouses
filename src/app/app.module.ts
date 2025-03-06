@@ -16,9 +16,13 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatCardModule} from '@angular/material/card';
+import { FavoriteComponent } from './favorite/favorite.component';
+
+import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
+import { PlantsComponent } from './plants/plants.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
