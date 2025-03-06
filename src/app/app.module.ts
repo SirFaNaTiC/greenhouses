@@ -16,9 +16,19 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatCardModule} from '@angular/material/card';
+import { TopicComponent } from './topic/topic.component';
+import { TopicService } from '../services/data.service';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent],
+  declarations: [
+    AppComponent, 
+    ConnectionComponent, 
+    InscriptionComponent, 
+    LandingpagesComponent, 
+    MainPageComponent, 
+    HeaderComponent, 
+    TopicComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,7 +50,7 @@ import {MatCardModule} from '@angular/material/card';
     provideFirestore(() => getFirestore())
    ],
   providers: [
-  
+    TopicService,
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],

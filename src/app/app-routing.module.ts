@@ -5,6 +5,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnectionComponent } from './connection/connection.component';
 import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { MainPageComponent } from './main-page/main-page.component';
+import { TopicComponent } from './topic/topic.component';
 
 const redirectLoggedInToItems = () => redirectLoggedInTo(['main-page']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['inscription']);
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'inscription' , component: InscriptionComponent, ...canActivate(redirectLoggedInToItems)},
   { path: '', component: LandingpagesComponent},
   { path: 'main-page', component: MainPageComponent, ...canActivate(redirectUnauthorizedToLogin)},
-  { path: 'landingpages', component: LandingpagesComponent, ...canActivate(redirectLoggedInToItems)}
+  { path: 'landingpages', component: LandingpagesComponent, ...canActivate(redirectLoggedInToItems)},
+  { path: 'topic', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin)}
 ];
 
 @NgModule({
