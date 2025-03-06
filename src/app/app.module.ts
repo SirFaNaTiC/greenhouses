@@ -18,6 +18,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatCardModule} from '@angular/material/card';
 import { TopicComponent } from './topic/topic.component';
 import { TopicService } from '../services/data.service';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TopicService } from '../services/data.service';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

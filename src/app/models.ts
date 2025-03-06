@@ -1,4 +1,5 @@
 import { User } from "@angular/fire/auth";
+import { Timestamp } from "@angular/fire/firestore";
 
 export interface Plant {
     id: number;
@@ -11,7 +12,7 @@ export interface Topic {
     title: Text;
     content: Text;
     author: User;
-    date: Date;   
+    date: Timestamp;   
 }
 
 export interface Comment {
