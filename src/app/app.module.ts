@@ -19,25 +19,12 @@ import {MatCardModule} from '@angular/material/card';
 import { TopicComponent } from './topic/topic.component';
 import { TopicService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
-
-@NgModule({
-  declarations: [
-    AppComponent, 
-    ConnectionComponent, 
-    InscriptionComponent, 
-    LandingpagesComponent, 
-    MainPageComponent, 
-    HeaderComponent, 
-    TopicComponent
-  ],
-
 import { FavoriteComponent } from './favorite/favorite.component';
-
 import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent,TopicComponent],
   imports: [
     BrowserModule,
     CommonModule,
