@@ -1,0 +1,23 @@
+<h2>Test du composant Topic</h2>
+
+<form>
+  <label for="content">Contenu :</label>
+  <textarea id="content" name="content" [(ngModel)]="content"></textarea>
+
+  <button (click)="newComment()">Créer un sujet</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contenu</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let comment of comments">
+      <th>{{comment.content}}</th>
+      <th>{{comment.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</th>
+    </tr>
+  </tbody>
+</table>

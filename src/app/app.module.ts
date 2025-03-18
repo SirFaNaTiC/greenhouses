@@ -23,9 +23,10 @@ import { FavoriteComponent } from './favorite/favorite.component';
 
 import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
+import { CommentaireComponent } from './commentaire/commentaire.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent, TopicComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent, TopicComponent, CommentaireComponent],
   imports: [
     BrowserModule,
     CommonModule,

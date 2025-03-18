@@ -1,10 +1,11 @@
 <div *ngIf="isLoggedIn">
     <div><button (click)="logOut()">Déconnexion</button></div>
+    <div><button [routerLink]="'/greenhouses'">Greenhouse</button></div>
+    <div><button [routerLink]="'/favorite'">Favorite</button></div>
+    <div><button [routerLink]="'/plants'">Plants</button></div>
+    <div><button [routerLink]="'/topics'">Topics</button></div>
+    <div><button [routerLink]="'/comments'">Commentaires</button></div>
+    <p>Welcome on the main page what do you whant to do ?</p>
 </div>
-<p>Welcome on the main page what do you whant to do ?</p>
 
-<div><button [routerLink]="'/greenhouses'">Greenhouse</button></div>
-<div><button [routerLink]="'/favorite'">Favorite</button></div>
-<div><button [routerLink]="'/plants'">Plants</button></div>
-<div><button [routerLink]="'/topic'">Topic</button></div>
 
