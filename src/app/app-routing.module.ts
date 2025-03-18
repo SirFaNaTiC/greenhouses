@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: '', component: LandingpagesComponent},
   { path: 'main-page', component: MainPageComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'landingpages', component: LandingpagesComponent, ...canActivate(redirectLoggedInToItems)},
-  { path: 'topic', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin)}
+  { path: 'topic', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'favorite', component: FavoriteComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'greenhouses', component: PersonalGreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'plants', component: PlantsComponent, ...canActivate(redirectUnauthorizedToLogin)}
