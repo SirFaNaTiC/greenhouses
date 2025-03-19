@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'greenhouses', component: PersonalGreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'plants', component: PlantsComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'comments', component: CommentaireComponent, ...canActivate(redirectUnauthorizedToLogin)},
-  { path: 'infosPlantes', component: InfosPlantesComponent, ...canActivate(redirectUnauthorizedToLogin)}
+    { path: 'infosPlantes', component: InfosPlantesComponent, ...canActivate(redirectUnauthorizedToLogin)}
+  ];
 
 
 @NgModule({
