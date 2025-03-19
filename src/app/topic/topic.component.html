@@ -1,13 +1,19 @@
 <h2>Test du composant Topic</h2>
 
-<form>
+<form #topicForm="ngForm">
   <label for="title">Titre :</label>
-  <input id="title" type="text" name="title" [(ngModel)]="title" />
+  <input id="title" type="text" name="title" [(ngModel)]="title" required #titleRef="ngModel">
+  <div *ngIf="titleRef.invalid && titleRef.touched" style="color: red;">
+    Le titre est requis !
+  </div>
 
   <label for="content">Contenu :</label>
-  <textarea id="content" name="content" [(ngModel)]="content"></textarea>
+  <textarea id="content" name="content" [(ngModel)]="content" required #contentRef="ngModel"></textarea>
+  <div *ngIf="contentRef.invalid && contentRef.touched" style="color: red;">
+    Le contenu est requis !
+  </div>
 
-  <button (click)="newTopic()">Créer un sujet</button>
+  <button (click)="newTopic()" [disabled]="topicForm.invalid">Créer un sujet</button>
 </form>
 
 <table>
