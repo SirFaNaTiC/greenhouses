@@ -22,7 +22,7 @@ export class CommentaireComponent implements OnInit{
       this.comments = (comments.docs.map(doc => doc.data() as Comment))
     })
   }
-
+  
   public newComment() {
     const today = new Date();
     const refCollection = collection(this.firestore, 'Comment');
