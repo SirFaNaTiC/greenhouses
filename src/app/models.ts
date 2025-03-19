@@ -5,6 +5,8 @@ export interface Plant {
     id: number;
     common_name: string;
     scientific_name: string;
+    image_url: string;
+
 }
 
 export interface Topic {
@@ -21,4 +23,5 @@ export interface Comment {
     author: User;
     date: Timestamp;
     topic: Topic;   
+
 }
