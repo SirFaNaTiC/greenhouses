@@ -16,16 +16,21 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatCardModule} from '@angular/material/card';
+import { TopicComponent } from './topic/topic.component';
+import { TopicService } from '../services/data.service';
+import { CommonModule } from '@angular/common';
 import { FavoriteComponent } from './favorite/favorite.component';
-
 import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent, InfosPlantesComponent],
+
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent,TopicComponent, InfosPlantesComponent],
+
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -45,7 +50,7 @@ import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
     provideFirestore(() => getFirestore())
    ],
   providers: [
-  
+    TopicService,
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent],
