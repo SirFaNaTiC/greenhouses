@@ -22,9 +22,12 @@ import { CommonModule } from '@angular/common';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
+import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent,TopicComponent],
+
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent,TopicComponent, InfosPlantesComponent],
+
   imports: [
     BrowserModule,
     CommonModule,
