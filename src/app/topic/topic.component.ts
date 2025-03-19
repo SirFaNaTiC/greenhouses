@@ -35,5 +35,4 @@ export class TopicComponent implements OnInit {
         date: today,
     }).then((docRef) => console.log('Written docID is:', docRef.id ))
   }
-
 }
