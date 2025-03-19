@@ -1,0 +1,12 @@
+<form>
+    <label>Email :</label>
+    <input type="email" [(ngModel)]="email" name="nom">
+    <br>
+    <label>Password :</label>
+    <input type="text" [(ngModel)]="password" name="email">
+    <br>
+    <button type="submit" (click)="connection(email, password)">Se connecter</button>
+</form>
+{{message}}<br>
+<p>Pas encore inscrit ?</p>
+<button [routerLink]="'/inscription'">Inscription</button>

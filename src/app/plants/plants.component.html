@@ -1,0 +1,25 @@
+<p>plants works!</p>
+<div><button [routerLink]="'/main-page'">Main page</button></div>
+<div *ngif="End; else affichage">
+    test
+</div>
+<ng-template #affichage>
+    <p>Voici la liste des plantes disponibles : </p>
+    <table>
+        <thead>
+        <tr>
+            <th>Commun_name</th>
+            <th>Scientific_name</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of plants">
+            <td>{{ item.common_name }}</td>
+            <td>{{ item.scientific_name }}</td>
+            <td><img [src]="item.image_url"></td>
+            <td><button [routerLink]="'/infosPlantes'">Infos</button></td>
+        </tr>
+        </tbody>
+    </table>
+</ng-template>

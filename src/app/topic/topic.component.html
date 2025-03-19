@@ -1,0 +1,28 @@
+<h2>Test du composant Topic</h2>
+
+<form>
+  <label for="title">Titre :</label>
+  <input id="title" type="text" name="title" [(ngModel)]="title" />
+
+  <label for="content">Contenu :</label>
+  <textarea id="content" name="content" [(ngModel)]="content"></textarea>
+
+  <button (click)="newTopic()">Créer un sujet</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let topic of topics">
+      <th>{{topic.title}}</th>
+      <th>{{topic.content}}</th>
+      <th>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</th>
+    </tr>
+  </tbody>
+</table>

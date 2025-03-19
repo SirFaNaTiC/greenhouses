@@ -1,0 +1,12 @@
+<form>
+    <label>Email :</label>
+    <input type="email" [(ngModel)]="email" name="nom">
+    <br>
+    <label>Password :</label>
+    <input type="text" [(ngModel)]="password" name="email">
+    <br>
+    <button type="submit" (click)="loggin(email, password)" [routerLink]="'/main-page'" >Soumettre</button>
+</form>
+{{message}}
+<p>Déjà inscrit ?</p>
+<button [routerLink]="'/connection'">Connexion</button>
