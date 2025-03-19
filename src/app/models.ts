@@ -21,7 +21,7 @@ export interface Comment {
     id: number;
     content: Text;
     author: User;
-    date: Date;
+    date: Timestamp;
     topic: Topic;   
 
 }

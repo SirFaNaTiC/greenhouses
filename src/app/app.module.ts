@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,11 +21,11 @@ import { CommonModule } from '@angular/common';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
+import { CommentaireComponent } from './commentaire/commentaire.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 
 @NgModule({
-
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent,TopicComponent, InfosPlantesComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent, TopicComponent, CommentaireComponent, InfosPlantesComponent],
 
   imports: [
     BrowserModule,
