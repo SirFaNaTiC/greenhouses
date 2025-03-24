@@ -1,10 +1,68 @@
-.header {
+nav {
     background-color: rgb(40, 153, 134);
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: rgb(40, 153, 134);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+}
+
+.header mat-card-content {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header div {
+    display: flex;
+    gap: 10px;
+}
+
+.header button {
+    background-color: rgb(139, 226, 212);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.header button:hover {
+    background-color: #16a085;
+}
+
+nav ul {
+    list-style: none;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius:0px;
-    position: sticky;
-    top: 0;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    background-color: rgb(19, 69, 61);
+    color: #1abc9c;
 }

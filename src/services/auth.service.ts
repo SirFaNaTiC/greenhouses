@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
+import { redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
 
@@ -23,7 +24,6 @@ export class AuthService {
     public logOut(){
         signOut(this.auth).then(() => {
             console.log('User logged out');
-            // Optionally, redirect the user
         }).catch(error => {
             console.error('Logout Error', error);
         });

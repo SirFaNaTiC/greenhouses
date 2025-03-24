@@ -18,7 +18,7 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['inscription']
 const routes: Routes = [
   { path: 'connection', component: ConnectionComponent, ...canActivate(redirectLoggedInToItems) },
   { path: 'inscription' , component: InscriptionComponent, ...canActivate(redirectLoggedInToItems)},
-  { path: '', component: LandingpagesComponent, ...canActivate(redirectLoggedInToItems)},
+  { path: '', component: ConnectionComponent, ...canActivate(redirectLoggedInToItems)},
   { path: 'main-page', component: MainPageComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'landingpages', component: LandingpagesComponent, ...canActivate(redirectLoggedInToItems)},
   { path: 'topics', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin)},

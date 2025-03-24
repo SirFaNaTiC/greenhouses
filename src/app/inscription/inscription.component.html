@@ -5,8 +5,10 @@
     <label>Password :</label>
     <input type="text" [(ngModel)]="password" name="email">
     <br>
-    <button type="submit" (click)="loggin(email, password)" [routerLink]="'/main-page'" >Soumettre</button>
+    <button type="submit" (click)="loggin(email, password)" [routerLink]="'/main-page'" >Inscription</button>
 </form>
-{{message}}
-<p>Déjà inscrit ?</p>
-<button [routerLink]="'/connection'">Connexion</button>
+<p class="erreur">{{message}}</p>
+<div class="bottom-part">
+    <p>Déjà inscrit ?</p>
+    <button [routerLink]="'/connection'">Connexion</button>
+</div>

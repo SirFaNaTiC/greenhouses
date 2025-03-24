@@ -1,22 +1,26 @@
 <h2>Test du composant Topic</h2>
 
-<form #topicForm="ngForm">
-  <label for="title">Titre :</label>
-  <input id="title" type="text" name="title" [(ngModel)]="title" required #titleRef="ngModel">
-  <div *ngIf="titleRef.invalid && titleRef.touched" style="color: red;">
-    Le titre est requis !
+<form #topicForm="ngForm" class="topic-form">
+  <div class="form-group">
+    <label for="title">Titre :</label>
+    <input id="title" type="text" name="title" [(ngModel)]="title" required #titleRef="ngModel" class="form-control">
+    <div *ngIf="titleRef.invalid && titleRef.touched" class="error-message">
+      Le titre est requis !
+    </div>
   </div>
 
-  <label for="content">Contenu :</label>
-  <textarea id="content" name="content" [(ngModel)]="content" required #contentRef="ngModel"></textarea>
-  <div *ngIf="contentRef.invalid && contentRef.touched" style="color: red;">
-    Le contenu est requis !
+  <div class="form-group">
+    <label for="content">Contenu :</label>
+    <textarea id="content" name="content" [(ngModel)]="content" required #contentRef="ngModel" class="form-control"></textarea>
+    <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
+      Le contenu est requis !
+    </div>
   </div>
 
-  <button (click)="newTopic()" [disabled]="topicForm.invalid">Créer un sujet</button>
+  <button (click)="newTopic()" [disabled]="topicForm.invalid" class="submit-button">Créer un sujet</button>
 </form>
 
-<table>
+<table class="topic-table">
   <thead>
     <tr>
       <th>Titre</th>
@@ -26,9 +30,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let topic of topics">
-      <th>{{topic.title}}</th>
-      <th>{{topic.content}}</th>
-      <th>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</th>
+      <td>{{topic.title}}</td>
+      <td>{{topic.content}}</td>
+      <td>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</td>
     </tr>
   </tbody>
 </table>
