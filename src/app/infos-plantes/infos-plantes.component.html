@@ -1,3 +1,19 @@
-<p>infos-plantes works!</p>
-<button [routerLink]="'/main-page'">Page d'accueil</button>
 <button [routerLink]="'/plants'">Page précédente</button>
+
+<p>Voici la liste des plantes disponibles : </p>
+    <table>
+        <thead>
+        <tr>
+            <th>Commun_name</th>
+            <th>Scientific_name</th>
+            <th>Image</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let plant of plantInfo">
+            <td>{{ plant.common_name }}</td>
+            <td>{{ plant.scientific_name }}</td>
+            <td><img [src]="plant.image_url"></td>
+        </tr>
+        </tbody>
+</table>

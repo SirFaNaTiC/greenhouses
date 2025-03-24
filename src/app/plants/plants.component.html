@@ -1,6 +1,6 @@
-<div><button [routerLink]="'/main-page'">Main page</button></div>
-<div *ngIf="End; else affichage">
-    test
+<div *ngIf="End; else affichage" class="ngif">
+    <p>Chargement des données en cours...</p>
+    <mat-spinner class="spinner" ></mat-spinner>
 </div>
 <ng-template #affichage>
     <p>Voici la liste des plantes disponibles : </p>
@@ -13,11 +13,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of plants">
-            <td>{{ item.common_name }}</td>
-            <td>{{ item.scientific_name }}</td>
-            <td><img [src]="item.image_url"></td>
-            <td><button [routerLink]="'/infosPlantes'">Infos</button></td>
+        <tr *ngFor="let plant of plants">
+            <td>{{ plant.common_name }}</td>
+            <td>{{ plant.scientific_name }}</td>
+            <td><img [src]="plant.image_url"></td>
+            <td><button [routerLink]="'/infosPlantes' " (id)="plant.id" >Infos</button></td>
         </tr>
         </tbody>
     </table>

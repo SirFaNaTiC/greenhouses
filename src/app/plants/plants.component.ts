@@ -12,7 +12,12 @@ export class PlantsComponent implements OnInit {
   public End = true;
   public plants : Plant[]=[];
   ngOnInit (){
-    this.ApiService.getPlantAll().subscribe(plant_temp=>this.plants=plant_temp);
-    this.End = false;
+    this.ApiService.getPlantAll().subscribe(
+      (plant_temp:any)=>
+      {
+        this.plants=plant_temp
+        this.End = false;
+      }
+    );
   }
 }
