@@ -66,3 +66,23 @@ nav ul li a:hover {
     background-color: rgb(19, 69, 61);
     color: #1abc9c;
 }
+
+.boutons{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header-head{
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    align-items: center;
+    padding-top: 15px;
+
+}
+
+#title{
+    padding-left: 5em;
+    font-size:xx-large;
+    padding-bottom: 16px;
+}
