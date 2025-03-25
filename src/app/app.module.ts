@@ -19,13 +19,13 @@ import { TopicComponent } from './topic/topic.component';
 import { TopicService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FavoriteComponent } from './favorite/favorite.component';
-import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
+import { GreenhousesComponent } from './greenhouses/greenhouses.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent, TopicComponent, CommentaireComponent, InfosPlantesComponent],
+  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, GreenhousesComponent, PlantsComponent, TopicComponent, CommentaireComponent, InfosPlantesComponent, GreenhousesComponent],
 
   imports: [
     BrowserModule,
