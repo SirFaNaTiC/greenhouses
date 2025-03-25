@@ -1,3 +1,22 @@
 <mat-card class="header">
-    <mat-card-content>Greenhouses</mat-card-content>
+    <div class="header-head">
+        <mat-card-content id="title">Ma serre interractive </mat-card-content>
+    <div class="boutons">
+        <div *ngIf="isLoggedIn">
+            <div><button (click)="logOut()">Déconnexion</button></div>
+        </div>
+        <div><button [routerLink]="'/main-page'">Accueil</button></div>
+    </div>
+
+    </div>
+    
+    <nav>
+        <ul>
+            <li><a [routerLink]="'/greenhouses'">Greenhouse</a></li>
+            <li><a [routerLink]="'/favorite'">Favorite</a></li>
+            <li><a [routerLink]="'/plants'">Plants</a></li>
+            <li><a [routerLink]="'/topics'">Topics</a></li>
+            <li><a [routerLink]="'/comments'">Commentaires</a></li>
+        </ul>
+    </nav>
 </mat-card>

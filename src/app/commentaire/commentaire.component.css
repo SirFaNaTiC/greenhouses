@@ -14,7 +14,7 @@ body {
   }
   
   /* Form styling */
-  .topic-form {
+  .comment-form {
     width: 80%;
     margin: 20px auto;
     background-color: #fff;
@@ -69,7 +69,7 @@ body {
   }
   
   /* Table styling */
-  .topic-table {
+  .comment-table {
     width: 80%;
     margin: 20px auto;
     border-collapse: collapse;
@@ -78,18 +78,18 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .topic-table th, .topic-table td {
+  .comment-table th, .comment-table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
-  .topic-table th {
+  .comment-table th {
     background-color: #f4f4f4;
     font-weight: bold;
   }
   
-  .topic-table tr:hover {
+  .comment-table tr:hover {
     background-color: #f1f1f1;
   }
   

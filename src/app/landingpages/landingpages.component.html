@@ -1,11 +1,9 @@
-L'utilisateur connecté est affiché dans la console 
-
 <div *ngIf="isLoggedIn; else loggeOut">
     <div><button (click)="logOut()">Déconnexion</button></div>
 </div>
 
 <ng-template #loggeOut>
     <div><button [routerLink]="'/connection'">Connexion</button></div>
-</ng-template>
 
-<div><button [routerLink]="'/inscription'">Inscription</button></div>
+    <div><button [routerLink]="'/inscription'">Inscription</button></div>
+</ng-template>
