@@ -1,4 +1,4 @@
-<form>
+<div class="connexion"><form>
     <label>Email :</label>
     <input type="email" [(ngModel)]="email" name="nom">
     <br>
@@ -7,6 +7,9 @@
     <br>
     <button type="submit" (click)="connection(email, password)">Se connecter</button>
 </form>
-{{message}}<br>
-<p>Pas encore inscrit ?</p>
-<button [routerLink]="'/inscription'">Inscription</button>
+<p class="erreur">{{message}}<br></p>
+<div class="bottom-part">
+    <p>Pas encore inscrit ?</p>
+    <button [routerLink]="'/inscription'">Inscription</button>
+</div>
+</div>
