@@ -23,7 +23,7 @@ export class GreenhousesComponent implements OnInit{
   }
 
   public createGreenhouse(): void {
-    this.auth.createGreenhouses();
+    this.auth.createGreenhouses(this.name);
   }
   
 }

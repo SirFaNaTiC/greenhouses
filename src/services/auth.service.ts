@@ -56,7 +56,7 @@ export class AuthService {
         );
     }
 
-    public createGreenhouses(): void {
+    public createGreenhouses(name: string): void {
         user(this.auth).pipe(
             switchMap(authUser => {
                 if (!authUser?.uid) {
@@ -72,8 +72,8 @@ export class AuthService {
                             return of(greenhouseDoc.data());
                         }
     
-                        // Création d'un document "dummy" dans la sous-collection 'Greenhouses'
-                        const newGreenhouseData = { d: authUser.uid };
+                
+                        const newGreenhouseData = { uid: authUser.uid , name : name};
     
                         return from(setDoc(greenhouseDocRef, newGreenhouseData)).pipe();
                     })
