@@ -1,36 +1,30 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
-import {  addDoc, collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { Auth, user } from '@angular/fire/auth';
+import {  addDoc, collection, doc, Firestore, getDoc, getDocs, onSnapshot, query, setDoc, where } from '@angular/fire/firestore';
 import { Greenhouse } from '../models';
+import { AuthService } from '../../services/auth.service';
+import { catchError, from, Observable, of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-greenhouses',
   templateUrl: './greenhouses.component.html',
   styleUrl: './greenhouses.component.css'
 })
-export class GreenhousesComponent implements OnInit {
+export class GreenhousesComponent implements OnInit{
 
-  private firestore = inject(Firestore);
 
-  constructor(private auth:Auth) { }
+  constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {
-    this.addUserGreenhouse();
-  }
-
-  public async addUserGreenhouse(){
-    const authUser = this.auth.currentUser;
-    console.log('auth user', authUser?.uid);
-    if (!authUser) {
-      console.error('User not authenticated');
-      throw new Error("User not authenticated");
-    }
-    const userCollectionRef = collection(this.firestore, `Users/${authUser.uid}/Greenhouse`);
-    
-    await addDoc(userCollectionRef,{
-      authUser: authUser.uid,
-    });
+  name: string = '';
   
+  ngOnInit(): void {
+    this.auth.checkAndCreateUser(); 
+    
   }
 
+  public createGreenhouse(): void {
+    this.auth.createGreenhouses();
+  }
+  
 }
+  

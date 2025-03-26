@@ -1,4 +1,13 @@
-<p>Welcomme on the Greenhouses page</p>
+<p>Welcome on the Greenhouses page</p>
 
-<div>
-</div>
+<form #commentForm="ngForm" class="comment-form">
+    <div class="form-group">
+      <label for="content">Contenu :</label>
+      <textarea id="content" name="content" [(ngModel)]="name" required #contentRef="ngModel" class="form-control"></textarea>
+      <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
+        Le contenu est requis !
+      </div>
+    </div>
+  
+    <button (click)="createGreenhouse()" [disabled]="commentForm.invalid" class="submit-button">Crée la Greenhouse</button>
+  </form>

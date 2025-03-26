@@ -9,7 +9,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { ConnectionComponent } from './connection/connection.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-import { provideRouter, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { LandingpagesComponent } from './landingpages/landingpages.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
