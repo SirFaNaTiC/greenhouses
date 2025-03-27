@@ -9,7 +9,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { ConnectionComponent } from './connection/connection.component';
 import { InscriptionComponent } from './inscription/inscription.component';
-import { RouterOutlet } from '@angular/router';
+import { provideRouter, RouterOutlet } from '@angular/router';
 import { LandingpagesComponent } from './landingpages/landingpages.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,27 +19,26 @@ import { TopicsComponent } from './topics/topics.component';
 import { TopicService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
-import { GreenhousesComponent } from './greenhouses/greenhouses.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TopicComponent } from './topic/topic.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConnectionComponent, 
-    InscriptionComponent, 
-    LandingpagesComponent, 
-    MainPageComponent, 
-    HeaderComponent, 
-    FavoriteComponent, 
-    GreenhousesComponent, 
-    PlantsComponent, 
-    TopicComponent, 
-    CommentaireComponent, 
-    InfosPlantesComponent, 
-    GreenhousesComponent
+    ConnectionComponent,
+    InscriptionComponent,
+    LandingpagesComponent,
+    MainPageComponent,
+    HeaderComponent,
+    FavoriteComponent,
+    PersonalGreenhousesComponent,
+    PlantsComponent,
+    TopicsComponent,
+    InfosPlantesComponent,
+    TopicComponent
   ],
 
   imports: [
