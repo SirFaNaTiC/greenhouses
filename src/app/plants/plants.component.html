@@ -8,7 +8,7 @@
             <img [src]="item.image_url">
             <div class="common-name">{{ item.common_name }}</div>
             <div class="scientific-name">{{ item.scientific_name }}</div>
-            <button [routerLink]="'/infosPlantes'">Infos</button>
+            <button [routerLink]="['/infosPlantes', item.id]">Infos</button>
         </div> 
     </div>
 </ng-template>

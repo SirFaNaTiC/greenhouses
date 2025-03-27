@@ -10,7 +10,7 @@ export interface Plant {
 }
 
 export interface Topic {
-    id: number;
+    id: string;
     title: Text;
     content: Text;
     author: User;
@@ -18,10 +18,8 @@ export interface Topic {
 }
 
 export interface Comment {
-    id: number;
-    content: Text;
+    content: string;
     author: User;
     date: Timestamp;
-    topic: Topic;   
-
+    topicId: Topic;   
 }
