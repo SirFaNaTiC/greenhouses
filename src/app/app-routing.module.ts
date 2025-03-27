@@ -7,7 +7,7 @@ import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angula
 import { MainPageComponent } from './main-page/main-page.component';
 import { TopicsComponent } from './topics/topics.component';
 import { FavoriteComponent } from './favorite/favorite.component';
-import { GreenhousesComponent } from './greenhouses/greenhouses.component';
+import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-greenhouses.component';
 import { PlantsComponent } from './plants/plants.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 import { TopicComponent } from './topic/topic.component';
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'main-page', component: MainPageComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'topics', component: TopicsComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'favorite', component: FavoriteComponent, ...canActivate(redirectUnauthorizedToLogin)},
-  { path: 'greenhouses', component: GreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
+  { path: 'greenhouses', component: PersonalGreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'plants', component: PlantsComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'infosPlantes/:id', component: InfosPlantesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'topic/:id', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin) }

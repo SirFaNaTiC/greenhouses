@@ -9,16 +9,6 @@ export interface Plant {
 
 }
 
-export interface Greenhouse{
-    id: number;
-    name: string;
-    plants: Plant[];
-}
-
-export interface Greenhouses{
-    greenhouses: Greenhouse[];
-}
-
 export interface Topic {
     id: string;
     title: Text;
@@ -33,4 +23,3 @@ export interface Comment {
     date: Timestamp;
     topicId: Topic;   
 }
-
