@@ -1,3 +1,7 @@
-<p>infos-plantes works!</p>
+<div *ngIf="currentPlant">
+    {{ currentPlant.common_name }}
+    {{ currentPlant.scientific_name }}
+    <img [src]="currentPlant.image_url">
+</div>
 <button [routerLink]="'/main-page'">Page d'accueil</button>
 <button [routerLink]="'/plants'">Page précédente</button>
