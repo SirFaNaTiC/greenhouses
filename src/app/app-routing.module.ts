@@ -11,6 +11,7 @@ import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-gr
 import { PlantsComponent } from './plants/plants.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 import { TopicComponent } from './topic/topic.component';
+import { GreenhousesComponent } from './greenhouses/greenhouses.component';
 
 const redirectLoggedInToItems = () => redirectLoggedInTo(['main-page']);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['inscription']);
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'main-page', component: MainPageComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'topics', component: TopicsComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'favorite', component: FavoriteComponent, ...canActivate(redirectUnauthorizedToLogin)},
-  { path: 'greenhouses', component: PersonalGreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
+  { path: 'greenhouses', component: GreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'plants', component: PlantsComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'infosPlantes/:id', component: InfosPlantesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'topic/:id', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin) }
