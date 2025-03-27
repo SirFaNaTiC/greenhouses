@@ -27,7 +27,6 @@ export class AppComponent implements OnInit{
     this.authService.checkAndCreateUser();
     this.authService.CheckAndCreateFavoris();
     this.authService.createGreenhouses();
-
   }
 
 }

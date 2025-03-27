@@ -1,12 +1,17 @@
-<div class="connexion"><form>
-    <label>Email :</label>
-    <input type="email" [(ngModel)]="email" name="nom">
-    <br>
-    <label>Password :</label>
-    <input type="text" [(ngModel)]="password" name="email">
-    <br>
-    <button type="submit" (click)="connection(email, password)">Se connecter</button>
-</form>
+<div class="connexion">
+    <form>
+        <label>Email :</label>
+        <input type="email" [(ngModel)]="email" name="nom" #emailField="ngModel">
+        <br>
+        <label>Password :</label>
+        <input type="text" [(ngModel)]="password" name="email">
+        <br>
+        <button type="submit" (click)="connection(email, password)">Se connecter</button>
+        
+        @if(emailField.errors?.['email'] && emailField.touched){
+            <p>Email Invalide</p>
+        }
+    </form>
 <p class="erreur">{{message}}<br></p>
 <div class="bottom-part">
     <p>Pas encore inscrit ?</p>

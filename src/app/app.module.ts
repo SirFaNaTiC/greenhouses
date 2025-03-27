@@ -14,18 +14,33 @@ import { LandingpagesComponent } from './landingpages/landingpages.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatCardModule} from '@angular/material/card';
-import { TopicComponent } from './topic/topic.component';
+import { MatCardModule } from '@angular/material/card';
+import { TopicsComponent } from './topics/topics.component';
 import { TopicService } from '../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { PlantsComponent } from './plants/plants.component';
-import { CommentaireComponent } from './commentaire/commentaire.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 import { GreenhousesComponent } from './greenhouses/greenhouses.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TopicComponent } from './topic/topic.component';
 
 @NgModule({
-  declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, GreenhousesComponent, PlantsComponent, TopicComponent, CommentaireComponent, InfosPlantesComponent, GreenhousesComponent],
+  declarations: [
+    AppComponent,
+    ConnectionComponent, 
+    InscriptionComponent, 
+    LandingpagesComponent, 
+    MainPageComponent, 
+    HeaderComponent, 
+    FavoriteComponent, 
+    GreenhousesComponent, 
+    PlantsComponent, 
+    TopicComponent, 
+    CommentaireComponent, 
+    InfosPlantesComponent, 
+    GreenhousesComponent
+  ],
 
   imports: [
     BrowserModule,
@@ -35,6 +50,7 @@ import { GreenhousesComponent } from './greenhouses/greenhouses.component';
     FormsModule,
     RouterOutlet,
     MatCardModule,
+    MatProgressSpinnerModule,
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'greenhouses-22f8b',
@@ -46,12 +62,9 @@ import { GreenhousesComponent } from './greenhouses/greenhouses.component';
       })
     ),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
-   ],
-  providers: [
-    TopicService,
-    provideAnimationsAsync()
+    provideFirestore(() => getFirestore()),
   ],
+  providers: [TopicService, provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
