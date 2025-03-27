@@ -23,6 +23,7 @@ import { PersonalGreenhousesComponent } from './personal-greenhouses/personal-gr
 import { PlantsComponent } from './plants/plants.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent, ConnectionComponent, InscriptionComponent, LandingpagesComponent, MainPageComponent, HeaderComponent, FavoriteComponent, PersonalGreenhousesComponent, PlantsComponent, TopicComponent, CommentaireComponent, InfosPlantesComponent],
@@ -35,6 +36,7 @@ import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
     FormsModule,
     RouterOutlet,
     MatCardModule,
+    MatProgressSpinnerModule,
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'greenhouses-22f8b',
