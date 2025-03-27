@@ -28,9 +28,9 @@ export class ApiService {
     ).pipe(map(response => response.data));
   }
 
-  public getPlantByID(id: number): Observable<Plant[]> {
+  public getPlantByID(id: number): Observable<Plant> {
     const urlrequete:string = this.apiUrl+'/plants/'+id+'?token=7OsJxKqb97ZVo_yNHR11KHoX1hJ78GnSpwQLsl8Ta9M'
-    return this.http.post<{data: Plant[]}>(
+    return this.http.post<{data: Plant}>(
       'https://us-central1-testeilco2024.cloudfunctions.net/callAPI',
       { url :urlrequete }
     ).pipe(map(response => response.data));
