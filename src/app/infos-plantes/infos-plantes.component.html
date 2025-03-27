@@ -1,7 +1,9 @@
-<div *ngIf="currentPlant">
-    {{ currentPlant.common_name }}
-    {{ currentPlant.scientific_name }}
-    <img [src]="currentPlant.image_url">
-</div>
-<button [routerLink]="'/main-page'">Page d'accueil</button>
-<button [routerLink]="'/plants'">Page précédente</button>
+    <div class="gallery" *ngIf="currentPlant"> 
+        <div class="image-card" >
+            <img [src]="currentPlant.image_url">
+        </div> 
+        <div class="texte">
+            <div class="common-name">{{ currentPlant.common_name }}</div>
+            <div class="scientific-name">{{ currentPlant.scientific_name }}</div>
+        </div>
+    </div>
