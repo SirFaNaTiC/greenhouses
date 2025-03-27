@@ -24,6 +24,7 @@ import { PlantsComponent } from './plants/plants.component';
 import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TopicComponent } from './topic/topic.component';
+import { GreenhousesComponent } from './greenhouses/greenhouses.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TopicComponent } from './topic/topic.component';
     PlantsComponent,
     TopicsComponent,
     InfosPlantesComponent,
-    TopicComponent
+    TopicComponent,
+    GreenhousesComponent,
   ],
 
   imports: [

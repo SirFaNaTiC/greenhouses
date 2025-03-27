@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { Plant } from './models';
 import { Auth, authState, getAuth, User } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -17,12 +18,15 @@ export class AppComponent implements OnInit{
   authState$ = authState(this.auth);
   authStateSubscription?: Subscription ;
 
-  constructor(private api: ApiService) {}
+  constructor(private firebase:FirebaseService) {}
   
   public ngOnInit() {
     this.authStateSubscription = this.authState$.subscribe((aUser: User | null) => {
       console.log(aUser);
     });
+    this.firebase.checkAndCreateUser();
+    this.firebase.CheckAndCreateFavoris();
+    this.firebase.createGreenhouses();
   }
 
 }
