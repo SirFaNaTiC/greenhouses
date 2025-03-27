@@ -4,6 +4,7 @@ import { addDoc, collection, doc, Firestore, getDoc, setDoc } from '@angular/fir
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
 import { catchError, from, of, switchMap, tap} from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -56,28 +57,22 @@ export class AuthService {
         );
     }
 
-    public createGreenhouses(name: string): void {
+    public createGreenhouse(name: string): void {
         user(this.auth).pipe(
             switchMap(authUser => {
                 if (!authUser?.uid) {
                     return of(null);
                 }
+
+                const greenhouseDocRef = doc(this.firestore, `Users/${authUser.uid}/Greenhouses/${name}`);
     
-                // Référence au document dans la sous-collection 'Greenhouses'
-                const greenhouseDocRef = doc(this.firestore, `Users/${authUser.uid}/Greenhouses/${authUser.uid}`);
+                const newGreenhouseData = { 
+                    id:authUser.uid,
+                    name : name,
+                    plants: [],
+                };
     
-                return from(getDoc(greenhouseDocRef)).pipe(
-                    switchMap(greenhouseDoc => {
-                        if (greenhouseDoc.exists()) {
-                            return of(greenhouseDoc.data());
-                        }
-    
-                
-                        const newGreenhouseData = { uid: authUser.uid , name : name};
-    
-                        return from(setDoc(greenhouseDocRef, newGreenhouseData)).pipe();
-                    })
-                );
+                return from(setDoc(greenhouseDocRef, newGreenhouseData)).pipe();
             }),
             catchError(error => {
                 console.error('Error checking user', error);
@@ -85,6 +80,39 @@ export class AuthService {
             })
         ).subscribe();
     }
+
+    public createFavoris(): void {
+        user(this.auth).pipe(
+            switchMap(authUser => {
+                if (!authUser?.uid) {
+                    return of(null);
+                }
+                const userRef = doc(this.firestore, `Users/${authUser.uid}/Favoris/${authUser.uid}`);
+                return from(getDoc(userRef)).pipe(
+                    switchMap(userDoc => {
+                        if (userDoc.exists()) {
+                            return of(userDoc.data());
+                        }
+                        const newUserData = { 
+                            uid: authUser.uid,
+                            plants: [],
+                        };
+                        return from(setDoc(userRef, newUserData)).pipe();
+                    })
+                );
+            }),
+            catchError(error => {
+                console.error('Error checking user', error);
+                return of(null);
+            })
+        ).subscribe(
+        );
+    }
+
+
+
+
+
 }
     
 

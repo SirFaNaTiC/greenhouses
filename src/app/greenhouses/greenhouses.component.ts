@@ -12,18 +12,17 @@ import { catchError, from, Observable, of, switchMap, tap } from 'rxjs';
 })
 export class GreenhousesComponent implements OnInit{
 
-
   constructor(private auth: AuthService) {}
 
   name: string = '';
   
   ngOnInit(): void {
     this.auth.checkAndCreateUser(); 
-    
+    this.auth.createFavoris();
   }
 
   public createGreenhouse(): void {
-    this.auth.createGreenhouses(this.name);
+    this.auth.createGreenhouse(this.name);
   }
   
 }
