@@ -10,3 +10,16 @@
     </div>
     <button (click)="createGreenhouse()" [disabled]="commentForm.invalid" class="submit-button">Créer une Greenhouse</button>
 </form>
+
+<table class="comment-table">
+  <thead>
+    <tr>
+      <th>Nom de la greenhouses</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let greenhouse of greenhouses">
+      <td>{{ greenhouse.name }}</td>
+    </tr>
+  </tbody>
+</table>

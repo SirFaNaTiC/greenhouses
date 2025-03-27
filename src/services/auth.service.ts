@@ -57,6 +57,29 @@ export class AuthService {
         );
     }
 
+    public createGreenhouses(): void {
+        user(this.auth).pipe(
+            switchMap(authUser => {
+                if (!authUser?.uid) {
+                    return of(null);
+                }
+
+                const greenhouseDocRef = doc(this.firestore, `Users/${authUser.uid}/Greenhouses/${authUser.uid}`);
+    
+                const newGreenhouseData = { 
+                    id:authUser.uid,
+
+                };
+    
+                return from(setDoc(greenhouseDocRef, newGreenhouseData)).pipe();
+            }),
+            catchError(error => {
+                console.error('Error checking user', error);
+                return of(null);
+            })
+        ).subscribe();
+    }
+
     public createGreenhouse(name: string): void {
         user(this.auth).pipe(
             switchMap(authUser => {
@@ -81,7 +104,7 @@ export class AuthService {
         ).subscribe();
     }
 
-    public createFavoris(): void {
+    public CheckAndCreateFavoris(): void {
         user(this.auth).pipe(
             switchMap(authUser => {
                 if (!authUser?.uid) {
