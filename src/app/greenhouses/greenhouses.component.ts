@@ -18,9 +18,7 @@ export class GreenhousesComponent implements OnInit{
 
   name: string = '';
   
-  authCurrentUser = getAuth()
 
-  
   
   ngOnInit(): void {
 

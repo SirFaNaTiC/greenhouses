@@ -1,2 +1,20 @@
-<p>favorite works!</p>
-<div><button [routerLink]="'/main-page'">Main page</button></div>
+<h2>My Favorite Plants</h2>
+
+<div *ngIf="plants$ | async as plants; else loading">
+  <div *ngIf="plants.length > 0">
+    <div class="plants-grid">
+      <ng-container *ngFor="let plant of plants">
+        <div class="plant-card" *ngIf="plant">
+          <h3>{{ plant?.common_name || 'Unknown' }}</h3>
+          <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
+          <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+          <button (click)="removePlantFromFavorites(plant.id)">Remove from favorites</button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading favorite plants...</p>
+</ng-template>
