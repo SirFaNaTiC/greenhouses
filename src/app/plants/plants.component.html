@@ -9,6 +9,7 @@
             <div class="common-name">{{ item.common_name }}</div>
             <div class="scientific-name">{{ item.scientific_name }}</div>
             <button [routerLink]="['/infosPlantes', item.id]">Infos</button>
+            <button (click)="addPlantToGreenhouse('test',item.id)" >Add to Greenhouse</button>
         </div> 
     </div>
 </ng-template>

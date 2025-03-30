@@ -2,8 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { Auth, user } from '@angular/fire/auth';
 import { redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { doc, Firestore, getDoc, setDoc } from '@angular/fire/firestore';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
+import { arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
 import { catchError, from, of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -68,6 +68,7 @@ export class FirebaseService {
     }
 
     public createGreenhouse(name: string): void {
+        console.log(this.firestore)
         user(this.auths).pipe(
             switchMap(authUser => {
                 if (!authUser?.uid) {
@@ -118,4 +119,28 @@ export class FirebaseService {
         ).subscribe(
         );
     }
+
+    public addPlantToGreenhouse(name: string, id: number): void {
+        user(this.auths).pipe(
+            switchMap(authUser => {
+                if (!authUser?.uid) {
+                    return of(null);
+                }
+
+                const greenhouseDocRef = doc(this.firestore, `Users/${authUser.uid}/Greenhouses/${name}`);
+    
+                const plantToAdd = {id: id};
+    
+                return from(updateDoc(greenhouseDocRef, {
+                    plants: arrayUnion(plantToAdd)
+                })).pipe();
+            }),
+            catchError(error => {
+                console.error('Error adding plant to greenhouse', error);
+                return of(null);
+            })
+        ).subscribe();
+    }
+
+   
 }

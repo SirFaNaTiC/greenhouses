@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'greenhouses', component: GreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'plants', component: PlantsComponent, ...canActivate(redirectUnauthorizedToLogin)},
   { path: 'infosPlantes/:id', component: InfosPlantesComponent, ...canActivate(redirectUnauthorizedToLogin)},
-  { path: 'topic/:id', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin) }
+  { path: 'topic/:id', component: TopicComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  { path: 'personal-greenhouses/:name', component: PersonalGreenhousesComponent, ...canActivate(redirectUnauthorizedToLogin)},
   ];
 
 
