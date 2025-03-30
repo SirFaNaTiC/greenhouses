@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
 import { catchError, from, map, Observable, of, switchMap } from 'rxjs';
-import { Greenhouse } from '../app/models';
+import { Favorites, Greenhouse } from '../app/models';
 
 @Injectable({
   providedIn: 'root'
@@ -188,5 +188,59 @@ export class FirebaseService {
             );
           })
         );
+    }
+
+    public getFavoris(): Observable<Favorites | null> {
+        return this.currentUser.pipe(
+          switchMap(user => {
+            if (!user?.uid) {
+              console.log('No user logged in');
+              return of(null);
+            }
+            
+            const favorisRef = doc(this.firestore, `Users/${user.uid}/Favoris/${user.uid}`);
+            return from(getDoc(favorisRef)).pipe(
+              map(docSnapshot => {
+                if (docSnapshot.exists()) {
+                  const data = docSnapshot.data();
+                  console.log('Favoris found:', data);
+                  return { id: docSnapshot.id, ...docSnapshot.data() } as Favorites;
+                } else {
+                  console.log('No favoris document found');
+                    return null;
+                }
+              }),
+              catchError(error => {
+                console.error('Error fetching favoris:', error);
+                return of(null);
+              })
+            );
+          })
+        );
       }
+    
+      public removePlantFromFavorites(plantId: number): Promise<void> {
+        return this.currentUser.pipe(
+          switchMap(user => {
+            if (!user?.uid) {
+              throw new Error('No user logged in');
+            }
+            
+            const favorisRef = doc(this.firestore, `Users/${user.uid}/Favoris/${user.uid}`);
+            return from(getDoc(favorisRef)).pipe(
+              switchMap(docSnapshot => {
+                if (docSnapshot.exists()) {
+                  const data = docSnapshot.data() as Favorites;
+                  const updatedPlants = data.plants.filter(plant => plant.id == plantId);
+                  return from(updateDoc(favorisRef, { 
+                    plants: updatedPlants
+                  }));
+                }
+                return of(void 0);
+              })
+            );
+          })
+        ).toPromise();
+      }
+
 }

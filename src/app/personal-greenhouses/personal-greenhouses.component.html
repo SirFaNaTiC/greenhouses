@@ -1,7 +1,7 @@
 <p>Personal Greenhouse: {{ greenhouseName }}</p>
 
 <div *ngIf="plants$ | async as plants; else loading">
-  <div *ngIf="plants.length > 0; else noPlants">
+  <div *ngIf="plants.length > 0">
     <div class="plants-grid">
       <ng-container *ngFor="let plant of plants">
         <div class="plant-card" *ngIf="plant">
@@ -12,10 +12,6 @@
       </ng-container>
     </div>
   </div>
-  
-  <ng-template #noPlants>
-    <p>No plants found in this greenhouse.</p>
-  </ng-template>
 </div>
 
 <ng-template #loading>

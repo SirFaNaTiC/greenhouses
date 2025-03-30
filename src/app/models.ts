@@ -14,6 +14,11 @@ export interface Greenhouse {
     plants:  [{id:number}];
 }
 
+export interface Favorites {
+    id: string;
+    plants:  [{id:number}];
+}
+
 export interface Greenhouses{
     greenhouses: Greenhouse[];
 }
