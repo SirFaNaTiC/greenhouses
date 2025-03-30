@@ -1,2 +1,23 @@
-<p>personal-greenhouses works!</p>
-<div><button [routerLink]="'/main-page'">Main page</button></div>
+<p>Personal Greenhouse: {{ greenhouseName }}</p>
+
+<div *ngIf="plants$ | async as plants; else loading">
+  <div *ngIf="plants.length > 0; else noPlants">
+    <div class="plants-grid">
+      <ng-container *ngFor="let plant of plants">
+        <div class="plant-card" *ngIf="plant">
+          <h3>{{ plant?.common_name || 'Unknown' }}</h3>
+          <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
+          <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  
+  <ng-template #noPlants>
+    <p>No plants found in this greenhouse.</p>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <p>Loading plants...</p>
+</ng-template>

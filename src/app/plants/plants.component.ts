@@ -19,6 +19,10 @@ export class PlantsComponent implements OnInit {
     
   }
 
+  public addPlantToFavorite( id:number) {
+    this.firebasesService.addPlantToFavorites(id);
+  }
+
   public addPlantToGreenhouse(name: string , id:number) {
     this.firebasesService.addPlantToGreenhouse(name , id);
   }

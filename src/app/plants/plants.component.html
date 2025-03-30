@@ -10,6 +10,7 @@
             <div class="scientific-name">{{ item.scientific_name }}</div>
             <button [routerLink]="['/infosPlantes', item.id]">Infos</button>
             <button (click)="addPlantToGreenhouse('test',item.id)" >Add to Greenhouse</button>
+            <button (click)="addPlantToFavorite(item.id)" >Add to Favorites</button>
         </div> 
     </div>
 </ng-template>

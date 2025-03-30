@@ -6,13 +6,12 @@ export interface Plant {
     common_name: string;
     scientific_name: string;
     image_url: string;
-
 }
 
-export interface Greenhouse{
-    id: number;
+export interface Greenhouse {
+    id: string;
     name: string;
-    plants: Plant[];
+    plants:  [{id:number}];
 }
 
 export interface Greenhouses{

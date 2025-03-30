@@ -4,7 +4,8 @@ import { redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
-import { catchError, from, of, switchMap } from 'rxjs';
+import { catchError, from, map, Observable, of, switchMap } from 'rxjs';
+import { Greenhouse } from '../app/models';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,9 @@ export class FirebaseService {
                         if (userDoc.exists()) {
                             return of(userDoc.data());
                         }
-                        const newUserData = { uid: authUser.uid};
+                        const newUserData = { 
+                            uid: authUser.uid
+                        };
                         return from(setDoc(userRef, newUserData)).pipe();
                     })
                 );
@@ -55,7 +58,6 @@ export class FirebaseService {
     
                 const newGreenhouseData = { 
                     id:authUser.uid,
-
                 };
     
                 return from(setDoc(greenhouseDocRef, newGreenhouseData)).pipe();
@@ -142,5 +144,49 @@ export class FirebaseService {
         ).subscribe();
     }
 
-   
+    public addPlantToFavorites(id: number): void {
+        user(this.auths).pipe(
+            switchMap(authUser => {
+                if (!authUser?.uid) {
+                    return of(null);
+                }
+
+                const greenhouseDocRef = doc(this.firestore, `Users/${authUser.uid}/Favoris/${authUser.uid}`);
+    
+                const plantToAdd = {id: id};
+    
+                return from(updateDoc(greenhouseDocRef, {
+                    plants: arrayUnion(plantToAdd)
+                })).pipe();
+            }),
+            catchError(error => {
+                console.error('Error adding plant to greenhouse', error);
+                return of(null);
+            })
+        ).subscribe();
+    }
+
+    public getGreenhouse(name: string): Observable<Greenhouse | null> {
+        return this.currentUser.pipe(
+          switchMap(user => {
+            if (!user?.uid) {
+              return of(null);
+            }
+            const greenhouseRef = doc(this.firestore, `Users/${user.uid}/Greenhouses/${name}`);
+            return from(getDoc(greenhouseRef)).pipe(
+              map(docSnapshot => {
+                if (docSnapshot.exists()) {
+                  return { id: docSnapshot.id, ...docSnapshot.data() } as Greenhouse;
+                } else {
+                  return null;
+                }
+              }),
+              catchError(error => {
+                console.error("Error fetching greenhouse:", error);
+                return of(null);
+              })
+            );
+          })
+        );
+      }
 }
