@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { getAuth} from '@angular/fire/auth';
-import {  collection, Firestore,onSnapshot } from '@angular/fire/firestore';
+import {  collection, deleteDoc, doc, Firestore,onSnapshot } from '@angular/fire/firestore';
 import { Greenhouse, } from '../models';
 import { FirebaseService } from '../../services/firebase.service';
 
@@ -30,12 +30,19 @@ export class GreenhousesComponent implements OnInit{
           this.greenhouses = (greenhouses.docs.map(doc => doc.data() as Greenhouse))
         });
     }
-    
-    
   }
 
   public createGreenhouse(): void {
     this.firebaseService.createGreenhouse(this.name);
   }
-  
+
+  public deleteGreenhouse(name: string){
+    const auth = getAuth();
+    if (auth.currentUser) {
+      const uid = auth.currentUser.uid;
+      console.log(name);
+      const refCollection = collection(this.firestore, `Users/${uid}/Greenhouses/`);
+      deleteDoc(doc(refCollection, name));
+    }
+  }
 }

@@ -6,8 +6,11 @@
     <input type="text" [(ngModel)]="password" name="email">
     <br>
     <button type="submit" (click)="loggin(email, password)" [routerLink]="'/main-page'" >Inscription</button>
+    <p class="erreur">{{message}}<br></p>
+    <div class="auth-buttons">
+        <img src="/assets/google-icon.png" alt="Google" (click)="signInWithGoogle()">
+    </div>
 </form>
-<p class="erreur">{{message}}</p>
 <div class="bottom-part">
     <p>Déjà inscrit ?</p>
     <button [routerLink]="'/connection'">Connexion</button>

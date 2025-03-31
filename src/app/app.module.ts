@@ -11,7 +11,6 @@ import { ConnectionComponent } from './connection/connection.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { LandingpagesComponent } from './landingpages/landingpages.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './header/header.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatCardModule } from '@angular/material/card';
@@ -32,7 +31,6 @@ import { GreenhousesComponent } from './greenhouses/greenhouses.component';
     ConnectionComponent,
     InscriptionComponent,
     LandingpagesComponent,
-    MainPageComponent,
     HeaderComponent,
     FavoriteComponent,
     PersonalGreenhousesComponent,
@@ -40,7 +38,7 @@ import { GreenhousesComponent } from './greenhouses/greenhouses.component';
     TopicsComponent,
     InfosPlantesComponent,
     TopicComponent,
-    GreenhousesComponent,
+    GreenhousesComponent
   ],
 
   imports: [

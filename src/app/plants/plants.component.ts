@@ -24,6 +24,6 @@ export class PlantsComponent implements OnInit {
   }
 
   public addPlantToGreenhouse(name: string , id:number) {
-    this.firebasesService.addPlantToGreenhouse(name , id);
+    this.firebasesService.addPlantToGreenhouse(name, id);
   }
 }

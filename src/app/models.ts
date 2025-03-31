@@ -27,13 +27,14 @@ export interface Topic {
     id: string;
     title: Text;
     content: Text;
-    author: User;
+    author: string;
     date: Timestamp;   
 }
 
 export interface Comment {
+    id: string;
     content: string;
-    author: User;
+    author: string;
     date: Timestamp;
     topicId: Topic;   
 }

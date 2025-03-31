@@ -7,12 +7,14 @@
         <input type="text" [(ngModel)]="password" name="email">
         <br>
         <button type="submit" (click)="connection(email, password)">Se connecter</button>
-        
         @if(emailField.errors?.['email'] && emailField.touched){
             <p>Email Invalide</p>
         }
+        <p class="erreur">{{message}}<br></p>
+        <div class="auth-buttons">
+            <img src="/assets/google-icon.png" alt="Google" (click)="signInWithGoogle()">
+        </div>
     </form>
-<p class="erreur">{{message}}<br></p>
 <div class="bottom-part">
     <p>Pas encore inscrit ?</p>
     <button [routerLink]="'/inscription'">Inscription</button>
