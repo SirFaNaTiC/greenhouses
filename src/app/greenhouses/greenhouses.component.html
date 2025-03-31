@@ -15,11 +15,13 @@
   <thead>
     <tr>
       <th>Nom de la greenhouses</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let greenhouse of greenhouses">
       <td> <button [routerLink]="['/personal-greenhouses' , greenhouse.name ]">{{ greenhouse.name }}</button></td>
+      <td><button (click)="deleteGreenhouse(greenhouse.name)">Supprimer</button></td>
     </tr>
   </tbody>
 </table>

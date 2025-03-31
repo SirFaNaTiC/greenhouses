@@ -33,9 +33,38 @@ export class ConnectionComponent {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode,errorMessage);
-      if (errorCode == "auth/invalid-credential"){
-        this.message = "Mauvais identifiants"
-      }
+      this.handleError(error);
   });
+  }
+
+  async signInWithGoogle() {
+    try {
+      await this.AuthService.signInWithGoogle();
+      this.router.navigate(['/greenhouses']);
+    } catch (error: any) {
+      this.handleError(error);
+    }
+  }
+
+  private handleError(error: any) {
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        this.message = "Un compte existe déjà avec cet email.";
+        break;
+      case 'auth/invalid-email':
+        this.message = "L'adresse email n'est pas valide.";
+        break;
+      case 'auth/user-not-found':
+        this.message = "Aucun utilisateur trouvé avec cet email.";
+        break;
+      case 'auth/wrong-password':
+        this.message = "Mot de passe incorrect.";
+        break;
+      case 'auth/too-many-requests':
+        this.message = "Trop de tentatives. Réessayez plus tard.";
+        break;
+      default:
+        this.message = "Une erreur est survenue : " + error.message;
+    }
   }
 }

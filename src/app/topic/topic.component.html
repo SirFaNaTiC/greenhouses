@@ -1,10 +1,12 @@
 
 <div *ngIf="topic">
-    <p>topic works!</p>
-    {{topic.title}}
+    <h2>{{topic.title}}</h2>
     {{topic.content}}
     {{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}
+    <div *ngIf="auth.currentUser?.uid === topic.author"><button (click)="deleteTopic()">Supprimer</button></div>
 </div>
+
+<h2> Commentaire </h2>
 
 <form #commentForm="ngForm" class="comment-form">
     <div class="form-group">
@@ -29,6 +31,7 @@
     <tr *ngFor="let comment of comments">
     <td>{{ comment.content }}</td>
     <td>{{ comment.date.toDate() | date: 'dd/MM/YYYY hh:mm:ss' }}</td>
+    <td><div *ngIf="auth.currentUser?.uid === comment.author"><button (click)="deleteComment(comment.id)">Supprimer</button></div></td>
     </tr>
 </tbody>
 </table>
