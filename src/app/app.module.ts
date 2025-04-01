@@ -24,6 +24,7 @@ import { InfosPlantesComponent } from './infos-plantes/infos-plantes.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TopicComponent } from './topic/topic.component';
 import { GreenhousesComponent } from './greenhouses/greenhouses.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { GreenhousesComponent } from './greenhouses/greenhouses.component';
     RouterOutlet,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'greenhouses-22f8b',

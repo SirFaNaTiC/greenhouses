@@ -1,4 +1,3 @@
-
 <div *ngIf="End; else affichage">
     <mat-spinner></mat-spinner>
 </div>
@@ -10,8 +9,16 @@
                 <div class="common-name">{{ item.common_name }}</div>
                 <div class="scientific-name">{{ item.scientific_name }}</div>
             </div>
-            <button (click)="addPlantToGreenhouse('test',item.id)" >Add to Greenhouse</button>
-            <button (click)="addPlantToFavorite(item.id)" >Add to Favorites</button>
+            <mat-form-field>
+                <mat-label>Select Greenhouse</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="greenhouse">
+                    @for (greenhouse of greenhouses; track greenhouse) {
+                        <mat-option [value]="greenhouse.name">{{greenhouse.selectedName}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <button (click)="addPlantToGreenhouse(item.id)">Add to Greenhouse</button>
+            <button (click)="addPlantToFavorite(item.id)">Add to Favorites</button>
         </div> 
     </div>
 </ng-template>
