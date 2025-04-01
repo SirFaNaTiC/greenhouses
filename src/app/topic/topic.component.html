@@ -6,8 +6,6 @@
     <div *ngIf="auth.currentUser?.uid === topic.author"><button (click)="deleteTopic()">Supprimer</button></div>
 </div>
 
-<h2> Commentaire </h2>
-
 <form #commentForm="ngForm" class="comment-form">
     <div class="form-group">
       <label for="content">Commentaire :</label>

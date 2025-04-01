@@ -13,6 +13,19 @@ h2 {
   margin: 20px 0;
 }
 
+button {
+  background: rgb(40, 153, 134);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: fit-content;
+  padding: 10px;
+  margin-top: 10px;
+}
+
 /* Form styling */
 .topic-form {
   width: 80%;
@@ -34,7 +47,7 @@ label {
 }
 
 .form-control {
-  width: 100%;
+  width: 98%;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -49,7 +62,7 @@ label {
 
 .submit-button {
   display: block;
-  width: 100%;
+  margin: 20px auto;
   padding: 10px;
   font-size: 1.1rem;
   background-color: #4CAF50;
