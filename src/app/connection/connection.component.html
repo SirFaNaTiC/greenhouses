@@ -4,19 +4,25 @@
         <input type="email" [(ngModel)]="email" name="nom" #emailField="ngModel">
         <br>
         <label>Password :</label>
-        <input type="text" [(ngModel)]="password" name="email">
+        <input type="password" [(ngModel)]="password" name="email">
         <br>
         <button type="submit" (click)="connection(email, password)">Se connecter</button>
+        
         @if(emailField.errors?.['email'] && emailField.touched){
-            <p>Email Invalide</p>
+            <p class="error-message">Email Invalide</p>
         }
         <p class="erreur">{{message}}<br></p>
-        <div class="auth-buttons">
-            <img src="/assets/google-icon.png" alt="Google" (click)="signInWithGoogle()">
+        
+        <div class="google-auth-section">
+            <p class="google-auth-text">Connexion via Google</p>
+            <div class="auth-buttons">
+                <img src="/assets/google-icon.png" alt="Google" (click)="signInWithGoogle()">
+            </div>
         </div>
     </form>
-<div class="bottom-part">
-    <p>Pas encore inscrit ?</p>
-    <button [routerLink]="'/inscription'">Inscription</button>
-</div>
+    
+    <div class="bottom-part">
+        <p>Pas encore inscrit ?</p>
+        <button [routerLink]="'/inscription'">Inscription</button>
+    </div>
 </div>
