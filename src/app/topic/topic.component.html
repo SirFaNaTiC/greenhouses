@@ -1,8 +1,8 @@
 
 <div *ngIf="topic">
+    <h1><b>{{topic.title}}</b></h1><br>
+    <h3>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</h3> <br>
     <h2>{{topic.title}}</h2>
-    {{topic.content}}
-    {{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}
     <div *ngIf="auth.currentUser?.uid === topic.author"><button (click)="deleteTopic()">Supprimer</button></div>
 </div>
 
@@ -10,23 +10,20 @@
 
 <form #commentForm="ngForm" class="comment-form">
     <div class="form-group">
-      <label for="content">Contenu :</label>
+      <label for="content">Commentaire :</label>
       <textarea id="content" name="content" [(ngModel)]="content" required #contentRef="ngModel" class="form-control"></textarea>
       <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
         Le contenu est requis !
       </div>
     </div>
-  
-    <button (click)="newComment()" [disabled]="commentForm.invalid" class="submit-button">Créer un commentaire</button>
+    <div class="boutonPublier">
+      <button (click)="newComment()" [disabled]="commentForm.invalid" class="submit-button">Publier</button>
+    </div>
   </form>
 
+
+  
 <table class="comment-table">
-<thead>
-    <tr>
-    <th>Contenu</th>
-    <th>Date</th>
-    </tr>
-</thead>
 <tbody>
     <tr *ngFor="let comment of comments">
     <td>{{ comment.content }}</td>

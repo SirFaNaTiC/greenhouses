@@ -24,15 +24,13 @@
   <thead>
     <tr>
       <th>Titre</th>
-      <th>Contenu</th>
       <th>Date</th>
-      <th>a</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let topic of topics">
       <td>{{topic.title}}</td>
-      <td>{{topic.content}}</td>
       <td>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</td>
       <td><button [routerLink]="['/topic', topic.id]">Voir Détails</button></td>
     </tr>
