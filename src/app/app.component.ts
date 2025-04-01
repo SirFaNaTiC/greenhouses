@@ -26,7 +26,6 @@ export class AppComponent implements OnInit{
     });
     this.firebase.checkAndCreateUser();
     this.firebase.CheckAndCreateFavoris();
-    this.firebase.createGreenhouses();
   }
 
 }

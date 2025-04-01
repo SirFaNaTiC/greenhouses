@@ -47,28 +47,6 @@ export class FirebaseService {
         throw new Error('Method not implemented.');
     }
 
-    public createGreenhouses(): void {
-        user(this.auths).pipe(
-            switchMap(authUser => {
-                if (!authUser?.uid) {
-                    return of(null);
-                }
-
-                const greenhouseDocRef = doc(this.firestore, `Users/${authUser.uid}/Greenhouses/${authUser.uid}`);
-    
-                const newGreenhouseData = { 
-                    id:authUser.uid,
-                };
-    
-                return from(setDoc(greenhouseDocRef, newGreenhouseData)).pipe();
-            }),
-            catchError(error => {
-                console.error('Error checking user', error);
-                return of(null);
-            })
-        ).subscribe();
-    }
-
     public createGreenhouse(name: string): void {
         console.log(this.firestore)
         user(this.auths).pipe(
