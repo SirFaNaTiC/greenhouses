@@ -99,3 +99,26 @@
     margin: 20px auto;
     display: block;
   }
+
+  /* Sélecteur de greenhouse */
+mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .mat-select {
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }

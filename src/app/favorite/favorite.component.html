@@ -1,7 +1,5 @@
-
-
 <div *ngIf="plants$ | async as plants; else loading">
-  <div *ngIf="plants.length > 0">
+  <div *ngIf="plants.length > 0; else noFavorites">
     <div class="plants-grid">
       <ng-container *ngFor="let plant of plants">
         <div class="plant-card" *ngIf="plant">
@@ -13,8 +11,18 @@
       </ng-container>
     </div>
   </div>
+  
+  <ng-template #noFavorites>
+    <div class="no-favorites-message">
+      <p>Vous n'avez pas encore de favoris ! Découvrez les plantes qui pourraient vous plaire en cliquant sur ce bouton</p>
+      <button [routerLink]="'/plants'">Découvrir les plantes</button>
+    </div>
+  </ng-template>
 </div>
 
 <ng-template #loading>
-  <p>Loading favorite plants...</p>
+  <div class="loading-message">
+    <p>Loading favorite plants...</p>
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
 </ng-template>
