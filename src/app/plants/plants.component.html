@@ -1,7 +1,16 @@
 <div *ngIf="End; else affichage">
     <mat-spinner></mat-spinner>
 </div>
+
 <ng-template #affichage>
+    <!-- Popup intégrée dans le template -->
+    <div class="custom-popup" *ngIf="showPopup" @fadeInOut>
+        <div class="popup-content">
+            <span>{{popupText}}</span>
+            <button (click)="showPopup = false">OK</button>
+        </div>
+    </div>
+
     <div class="gallery"> 
         <div class="image-card" *ngFor="let item of plants">
             <div [routerLink]="['/infosPlantes', item.id]">
@@ -17,8 +26,9 @@
                     }
                 </mat-select>
             </mat-form-field>
-            <button (click)="addPlantToGreenhouse(item.id)">Add to Greenhouse</button>
-            <button (click)="addPlantToFavorite(item.id)">Add to Favorites</button>
+            <button (click)="triggerAction('greenhouse', item.id)">Add to Greenhouse</button>
+            <button (click)="triggerAction('favorite', item.id)">Add to Favorites</button>
         </div> 
     </div>
 </ng-template>
+
