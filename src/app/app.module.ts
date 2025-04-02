@@ -25,6 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TopicComponent } from './topic/topic.component';
 import { GreenhousesComponent } from './greenhouses/greenhouses.component';
 import {MatSelectModule} from '@angular/material/select';
+import { TopicUpdateComponent } from './topic-update/topic-update.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatSelectModule} from '@angular/material/select';
     TopicsComponent,
     InfosPlantesComponent,
     TopicComponent,
-    GreenhousesComponent
+    GreenhousesComponent,
+    TopicUpdateComponent
   ],
 
   imports: [
