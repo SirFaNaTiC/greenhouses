@@ -3,14 +3,12 @@ import { Auth } from '@angular/fire/auth';
 import {
   addDoc,
   collection,
-  collectionChanges,
-  doc,
   Firestore,
-  getDoc,
   onSnapshot,
 } from '@angular/fire/firestore';
 import { Topic } from '../models';
 import { DatePipe } from '@angular/common';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-topic',
@@ -18,12 +16,17 @@ import { DatePipe } from '@angular/common';
   styleUrl: './topics.component.css',
 })
 export class TopicsComponent implements OnInit {
+
+  constructor(private firebaseService:FirebaseService){}
+
   private firestore = inject(Firestore);
   public title: string = '';
   public content: string = '';
   private auth = inject(Auth);
   public topicID = 'zJGFiHIzkQl3BCncTe7X';
   public topics: Topic[] = [];
+
+  
 
   public ngOnInit() {
     const refCollection = collection(this.firestore, 'Topic');
@@ -35,14 +38,11 @@ export class TopicsComponent implements OnInit {
     });
   }
 
-  public newTopic() {
-    const today = new Date();
-    const refCollection = collection(this.firestore, 'Topic');
-    addDoc(refCollection, {
-      title: this.title,
-      content: this.content,
-      author: this.auth.currentUser?.uid,
-      date: today,
-    }).then((docRef) => console.log('Written docID is:', docRef.id));
+  newTopic() {
+    const uid = this.auth.currentUser?.uid;
+    if (uid) {
+      this.firebaseService.newTopic(this.title, this.content, uid);
+    }
   }
+  
 }
