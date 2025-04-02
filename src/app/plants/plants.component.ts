@@ -17,21 +17,32 @@ export class PlantsComponent implements OnInit {
   greenhouses: GreenhouseSelected[] = [];
   selectedValue: string = '';
   private firestore = inject(Firestore);
+  addFavorite:boolean = false ;
 
   showPopup = false;
-popupText = '';
+  popupText = '';
 
-triggerAction(type: string, id: number) {
-  if (type === 'greenhouse') {
-      this.addPlantToGreenhouse(id);
-      this.popupText = 'Plant added to greenhouse!';
-  } else {
+  triggerAction(type: string, id: number) {
+    if (type === 'greenhouse') {
+      if ( this.selectedValue === ""){
+        this.popupText = 'greenhouse no selected';
+      }
+      else{
+        this.addPlantToGreenhouse(id);
+        this.popupText = 'Plant added to greenhouse!';
+      }
+    } else {
       this.addPlantToFavorite(id);
-      this.popupText = 'Plant added to favorites!';
+      if (!this.addFavorite){
+        this.popupText = 'Plant already in favorite';
+      }
+      else{
+        this.popupText = 'Plant added to favorites!';
+      }
+    }
+    this.showPopup = true;
+    setTimeout(() => this.showPopup = false, 3000);
   }
-  this.showPopup = true;
-  setTimeout(() => this.showPopup = false, 3000);
-}
 
   ngOnInit() {
     this.ApiService.getPlantAll().subscribe(plant_temp => {
@@ -54,9 +65,10 @@ triggerAction(type: string, id: number) {
     }
   }
 
-  public addPlantToFavorite(id: number) {
-    this.firebasesService.addPlantToFavorites(id);
-  }
+  public addPlantToFavorite(id: number): void {
+    this.firebasesService.addPlantToFavorites(id , this.addFavorite);
+}
+
 
   public addPlantToGreenhouse(id: number) {
     if (this.selectedValue) {

@@ -1,9 +1,24 @@
-    <div class="gallery" *ngIf="currentPlant"> 
-        <div class="image-card" >
-            <img [src]="currentPlant.image_url">
-        </div> 
-        <div class="texte">
-            <div class="common-name">{{ currentPlant.common_name }}</div>
-            <div class="scientific-name">{{ currentPlant.scientific_name }}</div>
-        </div>
+<div class="gallery" *ngIf="currentPlant"> 
+    <div class="image-card">
+        <img [src]="currentPlant.image_url" alt="Image de {{ currentPlant.common_name }}">
+    </div> 
+    <div class="texte">
+        <div class="common-name">{{ currentPlant.common_name }}</div>
+        <div class="scientific-name">{{ currentPlant.scientific_name }}</div>
+        
+        <p><strong>Famille :</strong> {{ currentPlant.family?.name || 'Non spécifié' }}</p>
+        <p><strong>Genre :</strong> {{ currentPlant.genus?.name || 'Non spécifié' }}</p>
+        <p><strong>Espèce :</strong> {{ currentPlant.species?.name || 'Non spécifié' }}</p>
+        <p><strong>Habitat de croissance :</strong> {{ currentPlant.growth_habit || 'Non spécifié' }}</p>
+        <p><strong>Statut natif :</strong> {{ currentPlant.native_status || 'Non spécifié' }}</p>
+        <p><strong>Couleur des fleurs :</strong> {{ currentPlant.flower_color || 'Non spécifié' }}</p>
+        <p><strong>Couleur du feuillage :</strong> {{ currentPlant.foliage_color || 'Non spécifié' }}</p>
+        <p><strong>Toxicité :</strong> {{ currentPlant.toxicity || 'Non spécifié' }}</p>
+        <p><strong>Médicinale :</strong> {{ currentPlant.medicinal ? 'Oui' : 'Non' }}</p>
+        <p><strong>Comestible :</strong> {{ currentPlant.edible ? 'Oui' : 'Non' }}</p>
+        
+        <p class="description">
+            {{ generateDescription(currentPlant) }}
+        </p>
     </div>
+</div>

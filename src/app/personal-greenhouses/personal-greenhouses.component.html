@@ -5,10 +5,12 @@
     <div *ngIf="plants.length > 0; else emptyGreenhouse">
       <div class="plants-grid">
         <ng-container *ngFor="let plant of plants">
-          <div class="plant-card" *ngIf="plant">
-            <h3>{{ plant?.common_name || 'Unknown' }}</h3>
-            <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
-            <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+          <div class="plant-card" *ngIf="plant" >
+            <div [routerLink]="['/infosPlantes', plant.main_species_id]">
+              <h3>{{ plant?.common_name || 'Unknown' }}</h3>
+              <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
+              <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+            </div>
             <td><button (click)="removePlantFromGreenhouses(greenhouseName!,plant)">Supprimer</button></td>
           </div>
         </ng-container>

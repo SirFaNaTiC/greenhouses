@@ -34,6 +34,7 @@ export class GreenhousesComponent implements OnInit{
 
   public createGreenhouse(): void {
     this.firebaseService.createGreenhouse(this.name);
+    this.name = '';
   }
 
   public deleteGreenhouse(name: string){

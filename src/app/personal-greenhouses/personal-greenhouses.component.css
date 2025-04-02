@@ -1,55 +1,112 @@
 .plants-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .plant-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .plant-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 4px;
-  }
-  
-  .plant-card h3 {
-    margin: 0.5rem 0;
-    color: #333;
-  }
-  
-  .plant-card p {
-    color: #666;
-    font-style: italic;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
 
-  .empty-state {
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 40px;
-    border-radius: 8px;
-  }
+.plant-card {
+  width: 200px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  background: white;
+}
 
-  button {
-    background: rgb(40, 153, 134);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: fit-content;
-    padding: 10px;
-    margin-top: 10px;
-    color: white;
+.plant-card:hover {
+  transform: translateY(-5px);
+}
+
+.plant-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.plant-card h3 {
+  font-weight: bold;
+  margin-top: 8px;
+  color: #333;
+  margin: 0.5rem 0;
+}
+
+.plant-card p {
+  font-style: italic;
+  color: #666;
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+button {
+  background-color: rgb(40, 153, 134);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
 button:hover {
-    background: #45a049;
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+  background: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.empty-state button {
+  background: #3498db;
+}
+
+.empty-state button:hover {
+  background: #2980b9;
+}
+
+.no-favorites-message {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.no-favorites-message button {
+  background: #3498db;
+}
+
+.no-favorites-message button:hover {
+  background: #2980b9;
+}
+
+.loading-message, .loading-state {
+  text-align: center;
+  margin-top: 20px;
+}
+
+mat-spinner {
+  margin: 20px auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .plants-grid {
+    flex-direction: column;
+    align-items: center;
   }
+}

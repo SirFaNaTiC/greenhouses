@@ -3,7 +3,14 @@
 </div>
 
 <ng-template #affichage>
-    <!-- Popup intégrée dans le template -->
+    <mat-form-field class="dropdown">
+        <mat-label>Select Greenhouse</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="greenhouse">
+            @for (greenhouse of greenhouses; track greenhouse) {
+                <mat-option [value]="greenhouse.name">{{greenhouse.selectedName}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
     <div class="custom-popup" *ngIf="showPopup" @fadeInOut>
         <div class="popup-content">
             <span>{{popupText}}</span>
@@ -18,14 +25,6 @@
                 <div class="common-name">{{ item.common_name }}</div>
                 <div class="scientific-name">{{ item.scientific_name }}</div>
             </div>
-            <mat-form-field>
-                <mat-label>Select Greenhouse</mat-label>
-                <mat-select [(ngModel)]="selectedValue" name="greenhouse">
-                    @for (greenhouse of greenhouses; track greenhouse) {
-                        <mat-option [value]="greenhouse.name">{{greenhouse.selectedName}}</mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
             <button (click)="triggerAction('greenhouse', item.id)">Add to Greenhouse</button>
             <button (click)="triggerAction('favorite', item.id)">Add to Favorites</button>
         </div> 
