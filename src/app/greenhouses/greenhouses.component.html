@@ -1,27 +1,25 @@
-
-
 <form #greenhousesForms="ngForm" class="comment-form">
-    <div class="form-group">
-      <label for="content">Contenu :</label>
+  <div class="form-group">
+      <label for="content">Content:</label>
       <textarea id="content" name="content" [(ngModel)]="name" required #contentRef="ngModel" class="form-control"></textarea>
       <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
-        Le contenu est requis !
+          Content is required!
       </div>
-    </div>
-    <button (click)="createGreenhouse()" [disabled]="greenhousesForms.invalid" class="submit-button">Créer une Greenhouse</button>
+  </div>
+  <button (click)="createGreenhouse()" [disabled]="greenhousesForms.invalid" class="submit-button">Create Greenhouse</button>
 </form>
 
 <table class="Greenhouses-table">
   <thead>
-    <tr>
-      <th>Nom de la greenhouses</th>
-      <th></th>
-    </tr>
+      <tr>
+          <th>Greenhouse Name</th>
+          <th></th>
+      </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let greenhouse of greenhouses">
-      <td> <button [routerLink]="['/personal-greenhouses' , greenhouse.name ]" class="greenhouse">{{ greenhouse.name }}</button></td>
-      <td><button (click)="deleteGreenhouse(greenhouse.name)" class="suppr">Supprimer</button></td>
-    </tr>
+      <tr *ngFor="let greenhouse of greenhouses">
+          <td><button [routerLink]="['/personal-greenhouses', greenhouse.name]" class="greenhouse">{{ greenhouse.name }}</button></td>
+          <td><button (click)="deleteGreenhouse(greenhouse.name)" class="suppr">Delete</button></td>
+      </tr>
   </tbody>
 </table>

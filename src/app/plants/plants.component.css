@@ -1,3 +1,7 @@
+.dropdown{
+  
+}
+
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -72,7 +76,7 @@
         background-color: #45a049;
       }
 
-/* Style de base pour les boutons */
+
 .image-card button {
     padding: 8px 12px;
     background: rgb(40, 153, 134);
@@ -87,7 +91,7 @@
   
   
   
-  /* Effet de survol pour le bouton "Add to Favorites" */
+
   .image-card button:hover {
     background-color: #45a049; 
     transform: translateY(-2px);
@@ -100,7 +104,7 @@
     display: block;
   }
 
-  /* Sélecteur de greenhouse */
+
 mat-form-field {
     width: 100%;
     margin-bottom: 15px;
@@ -116,7 +120,8 @@ mat-form-field {
     display: none;
   }
 
-/* Responsive */
+
+  
 @media (max-width: 600px) {
     .gallery {
       grid-template-columns: 1fr;
@@ -149,6 +154,6 @@ mat-form-field {
 
 .popup-content button:hover{
   background-color: #45a049;
-  transform: scale(1.05); /* Légère augmentation de taille */
+  transform: scale(1.05);
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }

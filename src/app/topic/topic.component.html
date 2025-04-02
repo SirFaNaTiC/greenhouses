@@ -1,38 +1,36 @@
 <div *ngIf="topic">
   <div class="title-container">
-    <div class="title-group">
-      <h1><b>{{ topic.title }}</b></h1>
-      <h3 class="topic-date">{{ topic.date.toDate() | date:'dd/MM/YYYY hh:mm:ss' }}</h3>
-    </div>
-    <div class="topic-actions" *ngIf="auth.currentUser?.uid === topic.author">
-      <button (click)="deleteTopic()" class="SupprimerTopic">Supprimer</button>
-      <button [routerLink]="['/topic-update', this.id]">Éditer</button>
-    </div>
+      <div class="title-group">
+          <h1><b>{{ topic.title }}</b></h1>
+          <h3 class="topic-date">{{ topic.date.toDate() | date:'dd/MM/YYYY hh:mm:ss' }}</h3>
+      </div>
+      <div class="topic-actions" *ngIf="auth.currentUser?.uid === topic.author">
+          <button (click)="deleteTopic()" class="SupprimerTopic">Delete</button>
+          <button [routerLink]="['/topic-update', this.id]">Edit</button>
+      </div>
   </div>
   <h2>{{ topic.content }}</h2>
 </div>
 
 <form #commentForm="ngForm" class="comment-form">
-    <div class="form-group">
-      <label for="content">Commentaire :</label>
+  <div class="form-group">
+      <label for="content">Comment:</label>
       <textarea id="content" name="content" [(ngModel)]="content" required #contentRef="ngModel" class="form-control"></textarea>
       <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
-        Le contenu est requis !
+          Content is required!
       </div>
-    </div>
-    <div class="boutonPublier">
-      <button (click)="newComment()" [disabled]="commentForm.invalid" class="submit-button">Publier</button>
-    </div>
-  </form>
+  </div>
+  <div class="boutonPublier">
+      <button (click)="newComment()" [disabled]="commentForm.invalid" class="submit-button">Publish</button>
+  </div>
+</form>
 
-
-  
 <table class="comment-table">
-<tbody>
-    <tr *ngFor="let comment of comments">
-    <td>{{ comment.content }}</td>
-    <td>{{ comment.date.toDate() | date: 'dd/MM/YYYY hh:mm:ss' }}</td>
-    <td><div *ngIf="auth.currentUser?.uid === comment.author"><button (click)="deleteComment(comment.id)" class="Supprimer_Comm">Supprimer</button></div></td>
-    </tr>
-</tbody>
+  <tbody>
+      <tr *ngFor="let comment of comments">
+          <td>{{ comment.content }}</td>
+          <td>{{ comment.date.toDate() | date: 'dd/MM/YYYY hh:mm:ss' }}</td>
+          <td><div *ngIf="auth.currentUser?.uid === comment.author"><button (click)="deleteComment(comment.id)" class="Supprimer_Comm">Delete</button></div></td>
+      </tr>
+  </tbody>
 </table>
