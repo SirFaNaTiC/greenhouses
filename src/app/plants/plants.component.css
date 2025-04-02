@@ -154,6 +154,6 @@ mat-form-field {
 
 .popup-content button:hover{
   background-color: #45a049;
-  transform: scale(1.05); /* Légère augmentation de taille */
+  transform: scale(1.05);
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }

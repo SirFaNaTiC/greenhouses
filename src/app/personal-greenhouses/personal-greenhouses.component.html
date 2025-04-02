@@ -2,34 +2,34 @@
   <h2>{{ greenhouseName }}</h2>
 
   <div *ngIf="plants$ | async as plants; else loading">
-    <div *ngIf="plants.length > 0; else emptyGreenhouse">
-      <div class="plants-grid">
-        <ng-container *ngFor="let plant of plants">
-          <div class="plant-card" *ngIf="plant" >
-            <div [routerLink]="['/infosPlantes', plant.main_species_id]">
-              <h3>{{ plant?.common_name || 'Unknown' }}</h3>
-              <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
-              <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
-            </div>
-            <td><button (click)="removePlantFromGreenhouses(greenhouseName!,plant)">Supprimer</button></td>
+      <div *ngIf="plants.length > 0; else emptyGreenhouse">
+          <div class="plants-grid">
+              <ng-container *ngFor="let plant of plants">
+                  <div class="plant-card" *ngIf="plant">
+                      <div [routerLink]="['/infosPlantes', plant.main_species_id]">
+                          <h3>{{ plant?.common_name || 'Unknown' }}</h3>
+                          <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
+                          <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+                      </div>
+                      <td><button (click)="removePlantFromGreenhouses(greenhouseName!, plant)">Remove</button></td>
+                  </div>
+              </ng-container>
           </div>
-        </ng-container>
       </div>
-    </div>
 
-    <ng-template #emptyGreenhouse>
-      <div class="empty-state">
-        <h3>Votre greenhouse est vide !</h3>
-        <p>Pas de soucis vous pouvez la remplir avec les différentes plantes que vous trouverez en cliquant sur ce bouton !</p>
-        <button [routerLink]="'/plants'">Découvrir les plantes</button>
-      </div>
-    </ng-template>
+      <ng-template #emptyGreenhouse>
+          <div class="empty-state">
+              <h3>Your greenhouse is empty!</h3>
+              <p>Don't worry, you can fill it with different plants you find by clicking this button!</p>
+              <button [routerLink]="'/plants'">Discover plants</button>
+          </div>
+      </ng-template>
   </div>
 
   <ng-template #loading>
-    <div class="loading-state">
-      <mat-spinner diameter="40"></mat-spinner>
-      <p>Loading your plants...</p>
-    </div>
+      <div class="loading-state">
+          <mat-spinner diameter="40"></mat-spinner>
+          <p>Loading your plants...</p>
+      </div>
   </ng-template>
 </div>

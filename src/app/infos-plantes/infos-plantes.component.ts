@@ -39,36 +39,34 @@ export class InfosPlantesComponent implements OnInit{
   generateDescription(plant: any): string {
     if (!plant) return '';
 
-    let description = `Le ${plant.common_name || 'plante'} (${plant.scientific_name || 'nom scientifique inconnu'}) appartient à la famille ${plant.family?.name || 'non spécifiée'} et au genre ${plant.genus?.name || 'non spécifié'}. `;
+    let description = `The ${plant.common_name || 'plant'} (${plant.scientific_name || 'unknown scientific name'}) belongs to the ${plant.family?.name || 'unspecified'} family and the ${plant.genus?.name || 'unspecified'} genus. `;
 
-    description += plant.growth_habit ? `Il pousse sous forme de ${plant.growth_habit}. ` : `Son mode de croissance n'est pas précisé, ce qui pourrait signifier qu'il n'a pas de forme spécifique. `;
+    description += plant.growth_habit ? `It grows in the form of ${plant.growth_habit}. ` : `Its growth habit is not specified, which might mean it has no specific form. `;
 
-    // Inverser ou préciser le statut natif
-    description += plant.native_status ? `On le trouve principalement dans ${plant.native_status}. ` : `Son statut natif est inconnu, il pourrait être cultivé dans différentes régions. `;
+    // Reverse or specify the native status
+    description += plant.native_status ? `It is mainly found in ${plant.native_status}. ` : `Its native status is unknown, it could be cultivated in different regions. `;
 
-    // Inverser ou préciser les couleurs des fleurs et du feuillage
-    if (plant.flower_color != "Non spécifié") {
-        description += `Ses fleurs sont de couleur ${plant.flower_color || 'non spécifiée'} et son feuillage est ${plant.foliage_color || 'non spécifié'}. `;
+    // Reverse or specify flower and foliage colors
+    if (plant.flower_color != "Not specified") {
+        description += `Its flowers are ${plant.flower_color || 'unspecified'} in color and its foliage is ${plant.foliage_color || 'unspecified'}. `;
     } else {
-        description += `Les informations sur la couleur des fleurs et du feuillage sont manquantes. `;
+        description += `Information on flower and foliage color is missing. `;
     }
 
-    // Inverser ou préciser la toxicité
-    if (plant.toxicity != "Non spécifié") {
-        description += `Attention, cette plante est considérée comme ${plant.toxicity}. `;
+    // Reverse or specify toxicity
+    if (plant.toxicity != "Not specified") {
+        description += `Warning, this plant is considered ${plant.toxicity}. `;
     } else {
-        description += `Il n'y a pas d'information sur la toxicité, il pourrait être sans danger ou non testé. `;
+        description += `There is no information on toxicity, it could be safe or untested. `;
     }
 
-    // Usage médicinal
-    description += plant.medicinal ? `Elle est utilisée à des fins médicinales. ` : `Elle ne possède pas d'usage médicinal connu, mais cela ne signifie pas qu'elle ne pourrait pas en avoir. `;
+    // Medicinal use
+    description += plant.medicinal ? `It is used for medicinal purposes. ` : `It has no known medicinal use, but this does not mean it could not have any. `;
 
-    // Comestibilité
-    description += plant.edible ? `Elle est également comestible.` : `Elle n'est pas considérée comme comestible, mais pourrait l'être dans certaines circonstances.`;
+    // Edibility
+    description += plant.edible ? `It is also edible.` : `It is not considered edible, but could be under certain circumstances.`;
 
     return description;
 }
-
-
 
 }

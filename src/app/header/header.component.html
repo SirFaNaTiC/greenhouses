@@ -1,12 +1,11 @@
 <mat-card class="header">
     <div class="header-head">
-        <mat-card-content id="title">Ma serre interractive </mat-card-content>
-    <div class="boutons">
-        <div *ngIf="isLoggedIn">
-            <div><button (click)="logOut()">Déconnexion</button></div>
+        <mat-card-content id="title">My Interactive Greenhouse</mat-card-content>
+        <div class="boutons">
+            <div *ngIf="isLoggedIn">
+                <div><button (click)="logOut()">Log out</button></div>
+            </div>
         </div>
-    </div>
-
     </div>
     
     <nav>
