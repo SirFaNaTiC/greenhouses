@@ -4,7 +4,7 @@ import { FirebaseService } from '../../services/firebase.service';
 import { ApiService } from '../../services/api.service';
 import { Plant, Greenhouse } from '../../app/models';
 import { switchMap, map } from 'rxjs/operators';
-import { forkJoin, Observable, of } from 'rxjs';
+import { BehaviorSubject, forkJoin, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-personal-greenhouses',
@@ -13,7 +13,9 @@ import { forkJoin, Observable, of } from 'rxjs';
 })
 export class PersonalGreenhousesComponent implements OnInit {
   greenhouseName: string | null = null;
-  plants$: Observable<Plant[]> = of([]);
+  plants: Plant | undefined;
+  currentPlant: Plant | undefined;
+  plants$: BehaviorSubject<Plant[]> = new BehaviorSubject<Plant[]>([]);
 
   constructor(
     private route: ActivatedRoute,
@@ -30,24 +32,29 @@ export class PersonalGreenhousesComponent implements OnInit {
     });
   }
 
-  loadGreenhouseData(greenhouseName: string): void {
+  removePlantFromGreenhouses(name: string, plant: Plant) {
+    this.firebaseService.removePlantFromGreenhouses(name, plant.main_species_id)
+    this.ngOnInit()
+  }
+
+  loadGreenhouseData(greenhouseName: string) {
     this.firebaseService.getGreenhouse(greenhouseName).pipe(
       switchMap(greenhouse => {
-        if (greenhouse && greenhouse.plants && greenhouse.plants.length > 0) {
+        if (greenhouse?.plants?.length) {
           console.log('Greenhouse data:', greenhouse);
-          const plantObservables = greenhouse.plants.map(plant => 
+          const plantObservables: Observable<Plant>[] = greenhouse.plants.map(plant =>
             this.apiService.getPlantByID(plant.id)
           );
           return forkJoin(plantObservables).pipe(
-            map(plants => {
+            map((plants: Plant[]) => {
               console.log('Plants fetched:', plants);
-              this.plants$ = of(plants);
               return plants;
             })
           );
         }
-        return of([]);
+        return of<Plant[]>([]);
       })
-    ).subscribe();
+    ).subscribe(plants => this.plants$.next(plants));
   }
+
 }

@@ -9,6 +9,7 @@
             <h3>{{ plant?.common_name || 'Unknown' }}</h3>
             <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
             <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+            <td><button (click)="removePlantFromGreenhouses(greenhouseName!,plant)">Supprimer</button></td>
           </div>
         </ng-container>
       </div>

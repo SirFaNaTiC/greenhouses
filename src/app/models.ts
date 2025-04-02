@@ -3,6 +3,7 @@ import { Timestamp } from "@angular/fire/firestore";
 
 export interface Plant {
     id: number;
+    main_species_id:number;
     common_name: string;
     scientific_name: string;
     image_url: string;

@@ -112,7 +112,7 @@ export class FirebaseService {
                 const plantToAdd = {id: id};
     
                 return from(updateDoc(greenhouseDocRef, {
-                    plants: arrayUnion(plantToAdd)
+                    plants: arrayUnion(plantToAdd),
                 })).pipe();
             }),
             catchError(error => {
@@ -209,7 +209,7 @@ export class FirebaseService {
               switchMap(docSnapshot => {
                 if (docSnapshot.exists()) {
                   const data = docSnapshot.data() as Favorites;
-                  const updatedPlants = data.plants.filter(plant => plant.id == plantId);
+                  const updatedPlants = data.plants.filter(plant => plant.id !== plantId);
                   return from(updateDoc(favorisRef, { 
                     plants: updatedPlants
                   }));
@@ -220,5 +220,30 @@ export class FirebaseService {
           })
         ).toPromise();
       }
+
+      public removePlantFromGreenhouses(name: string , plantId: number): Promise<void> {
+        return this.currentUser.pipe(
+          switchMap(user => {
+            if (!user?.uid) {
+              throw new Error('No user logged in');
+            }
+            
+            const favorisRef = doc(this.firestore, `Users/${user.uid}/Greenhouses/${name}`);
+            return from(getDoc(favorisRef)).pipe(
+              switchMap(docSnapshot => {
+                if (docSnapshot.exists()) {
+                  const data = docSnapshot.data() as Favorites;
+                  const updatedPlants = data.plants.filter(plant => plant.id !== plantId);
+                  return from(updateDoc(favorisRef, { 
+                    plants: updatedPlants
+                  }));
+                }
+                return of(void 0);
+              })
+            );
+          })
+        ).toPromise();
+      }
+      
 
 }
