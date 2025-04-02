@@ -1,5 +1,5 @@
 <div class="greenhouse-container">
-  <h2>Personal Greenhouse: {{ greenhouseName }}</h2>
+  <h2>{{ greenhouseName }}</h2>
 
   <div *ngIf="plants$ | async as plants; else loading">
     <div *ngIf="plants.length > 0; else emptyGreenhouse">
