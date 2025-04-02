@@ -9,6 +9,7 @@ export interface Plant {
     image_url: string;
 }
 
+
 export interface Greenhouse {
     id: string;
     name: string;

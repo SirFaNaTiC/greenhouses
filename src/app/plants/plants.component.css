@@ -122,3 +122,27 @@ mat-form-field {
       grid-template-columns: 1fr;
     }
   }
+
+  .custom-popup {
+    position: fixed;
+    top: 10%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    margin-left: 10px;
+    padding: 8px 20px;
+    background: rgb(40, 153, 134);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

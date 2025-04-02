@@ -18,6 +18,21 @@ export class PlantsComponent implements OnInit {
   selectedValue: string = '';
   private firestore = inject(Firestore);
 
+  showPopup = false;
+popupText = '';
+
+triggerAction(type: string, id: number) {
+  if (type === 'greenhouse') {
+      this.addPlantToGreenhouse(id);
+      this.popupText = 'Plant added to greenhouse!';
+  } else {
+      this.addPlantToFavorite(id);
+      this.popupText = 'Plant added to favorites!';
+  }
+  this.showPopup = true;
+  setTimeout(() => this.showPopup = false, 3000);
+}
+
   ngOnInit() {
     this.ApiService.getPlantAll().subscribe(plant_temp => {
       this.plants = plant_temp;
