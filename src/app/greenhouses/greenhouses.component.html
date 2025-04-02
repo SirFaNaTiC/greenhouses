@@ -20,8 +20,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let greenhouse of greenhouses">
-      <td> <button [routerLink]="['/personal-greenhouses' , greenhouse.name ]">{{ greenhouse.name }}</button></td>
-      <td><button (click)="deleteGreenhouse(greenhouse.name)">Supprimer</button></td>
+      <td> <button [routerLink]="['/personal-greenhouses' , greenhouse.name ]" class="greenhouse">{{ greenhouse.name }}</button></td>
+      <td><button (click)="deleteGreenhouse(greenhouse.name)" class="suppr">Supprimer</button></td>
     </tr>
   </tbody>
 </table>

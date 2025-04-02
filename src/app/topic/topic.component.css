@@ -15,6 +15,57 @@ margin-bottom: 30px;
 
 }
 
+.title-group h1 {
+    font-size: 2.5rem; /* Taille augmentée (environ 40px) */
+    margin: 0; /* Supprime les marges par défaut */
+    line-height: 1.2; /* Ajuste l'interligne */
+  }
+
+.title-container {
+display: flex;
+justify-content: space-between; /* Met le titre à gauche et les boutons à droite */
+align-items: center; /* Aligne verticalement au centre */
+margin-bottom: 10px; /* Espace sous la ligne titre + boutons */
+}
+
+.topic-actions {
+display: flex;
+gap: 10px !important; /* Espace entre les boutons */
+}
+
+.topic-actions button {
+margin-right: 10px; /* Espace à droite de chaque bouton */
+}
+
+.topic-actions button:last-child {
+margin-right: 0; /* Pas de marge sur le dernier bouton */
+}
+
+.topic-actions button:last-child:hover{
+    background: #45a049;
+    transform: scale(1.05); /* Légère augmentation de taille */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombre portée */
+}
+
+.topic-actions button:first-child:hover{
+    background: #c82333;
+    transform: scale(1.05); /* Légère augmentation de taille */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombre portée */
+}
+
+.title-group {
+display: flex;
+flex-direction: column;
+gap: 0; /* Supprime tout espace entre les éléments */
+line-height: 1.2; /* Réduit l'interligne par défaut */
+}
+
+.topic-date {
+font-size: 0.8em;
+color: #666;
+margin: 0 !important; /* Supprime les marges par défaut */
+padding: 0!important; /* Supprime les paddings par défaut */
+}
 
 div:first-child p {
 font-size: 1.2em;
@@ -52,6 +103,16 @@ button {
     padding: 10px;
     margin-top: 10px;
 }
+
+
+
+.Supprimer_Comm:hover {
+    background-color: #c82333 !important;
+    transform: scale(1.05); /* Légère augmentation de taille */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  }
+
+
 
 .form-group label {
 display: block;
@@ -100,7 +161,9 @@ transition: background-color 0.3s ease;
 }
 
 .submit-button:hover:not(:disabled) {
-background-color: #e0e0e0;
+    background-color: #45a049;
+    transform: scale(1.05); /* Légère augmentation de taille */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .submit-button:disabled {

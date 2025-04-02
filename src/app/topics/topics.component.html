@@ -32,7 +32,7 @@
     <tr *ngFor="let topic of topics">
       <td>{{topic.title}}</td>
       <td>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</td>
-      <td><button [routerLink]="['/topic', topic.id]">Voir Détails</button></td>
+      <td><button [routerLink]="['/topic', topic.id]" class="details with-icon">Voir Détails</button></td>
     </tr>
   </tbody>
 </table>

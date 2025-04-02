@@ -1,10 +1,15 @@
-
 <div *ngIf="topic">
-    <h1><b>{{topic.title}}</b></h1><br>
-    <h3>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</h3> <br>
-    <h2>{{topic.content}}</h2>
-    <div *ngIf="auth.currentUser?.uid === topic.author"><button (click)="deleteTopic()">Supprimer</button></div>
-    <div *ngIf="auth.currentUser?.uid === topic.author"><button [routerLink]="['/topic-update', this.id]">Editer</button></div>
+  <div class="title-container">
+    <div class="title-group">
+      <h1><b>{{ topic.title }}</b></h1>
+      <h3 class="topic-date">{{ topic.date.toDate() | date:'dd/MM/YYYY hh:mm:ss' }}</h3>
+    </div>
+    <div class="topic-actions" *ngIf="auth.currentUser?.uid === topic.author">
+      <button (click)="deleteTopic()" class="SupprimerTopic">Supprimer</button>
+      <button [routerLink]="['/topic-update', this.id]">Éditer</button>
+    </div>
+  </div>
+  <h2>{{ topic.content }}</h2>
 </div>
 
 <form #commentForm="ngForm" class="comment-form">
@@ -27,7 +32,7 @@
     <tr *ngFor="let comment of comments">
     <td>{{ comment.content }}</td>
     <td>{{ comment.date.toDate() | date: 'dd/MM/YYYY hh:mm:ss' }}</td>
-    <td><div *ngIf="auth.currentUser?.uid === comment.author"><button (click)="deleteComment(comment.id)">Supprimer</button></div></td>
+    <td><div *ngIf="auth.currentUser?.uid === comment.author"><button (click)="deleteComment(comment.id)" class="Supprimer_Comm">Supprimer</button></div></td>
     </tr>
 </tbody>
 </table>
