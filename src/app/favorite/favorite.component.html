@@ -2,24 +2,25 @@
   <div *ngIf="plants.length > 0; else noFavorites">
     <div class="plants-grid">
       <ng-container *ngFor="let plant of plants">
-        <div class="plant-card" *ngIf="plant">
-          <h3>{{ plant?.common_name || 'Unknown' }}</h3>
-          <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
-          <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+        <div class="plant-card" *ngIf="plant" >
+          <div [routerLink]="['/infosPlantes', plant.main_species_id]">
+            <h3>{{ plant?.common_name || 'Unknown' }}</h3>
+            <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
+            <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
+          </div>
           <button (click)="removePlantFromFavorites(plant)">Remove from favorites</button>
         </div>
       </ng-container>
     </div>
   </div>
-  
+ 
   <ng-template #noFavorites>
     <div class="no-favorites-message">
-      <p>Vous n'avez pas encore de favoris ! Découvrez les plantes qui pourraient vous plaire en cliquant sur ce bouton</p>
-      <button [routerLink]="'/plants'">Découvrir les plantes</button>
+      <p>You don't have any favorites yet! Discover plants that might interest you by clicking this button</p>
+      <button [routerLink]="'/plants'">Discover plants</button>
     </div>
   </ng-template>
 </div>
-
 <ng-template #loading>
   <div class="loading-message">
     <p>Loading favorite plants...</p>

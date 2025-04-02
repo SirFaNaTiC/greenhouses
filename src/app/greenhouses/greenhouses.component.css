@@ -1,4 +1,4 @@
-/* Style général */
+
 .comment-form {
     max-width: 400px;
     margin: 20px auto;
@@ -8,13 +8,11 @@
     background-color: #f9f9f9;
   }
   
-  /* Style des titres */
   h1, h2, h3 {
     color: #333;
     text-align: center;
   }
   
-  /* Style des formulaires */
   .form-group {
     margin-bottom: 15px;
   }
@@ -40,7 +38,7 @@
     outline: none;
   }
   
-  /* Style des boutons */
+
   .submit-button {
     background-color: rgb(40, 153, 134);
     color: white;
@@ -54,6 +52,8 @@
   
   .submit-button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
   }
   
   .submit-button:disabled {
@@ -61,7 +61,7 @@
     cursor: not-allowed;
   }
   
-  /* Style du tableau */
+
   .Greenhouses-table {
     width: 100%;
     border-collapse: collapse;
@@ -79,7 +79,7 @@
     font-weight: 500;
   }
   
-  /* Style des boutons dans le tableau */
+
   .Greenhouses-table button {
     padding: 6px 12px;
     border: none;
@@ -95,19 +95,30 @@
   }
   
   .Greenhouses-table button[routerLink]:hover {
-    background-color: #0b7dda;
+    background-color: #45a049;
   }
   
   .Greenhouses-table button:not([routerLink]) {
     background-color: rgb(40, 153, 134);
     color: white;
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
   }
   
-  .Greenhouses-table button:not([routerLink]):hover {
+  .Greenhouses-table .greenhouse:not([routerLink]):hover {
     background-color: #45a049;
+    transform: scale(1.05); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+  }
+
+  .Greenhouses-table .suppr:not([routerLink]):hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
   }
   
-  /* Messages d'erreur */
+  
+
   .error-message {
     color: #f44336;
     font-size: 12px;

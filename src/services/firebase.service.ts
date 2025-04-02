@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Auth, user } from '@angular/fire/auth';
 import { redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { arrayUnion, doc, Firestore, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
+import { addDoc, arrayUnion, collection, doc, Firestore, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
 import { catchError, from, map, Observable, of, switchMap } from 'rxjs';
 import { Favorites, Greenhouse } from '../app/models';
@@ -122,7 +122,7 @@ export class FirebaseService {
         ).subscribe();
     }
 
-    public addPlantToFavorites(id: number): void {
+    public addPlantToFavorites(id: number , addFavorite:boolean) {
         user(this.auths).pipe(
             switchMap(authUser => {
                 if (!authUser?.uid) {
@@ -245,5 +245,26 @@ export class FirebaseService {
         ).toPromise();
       }
       
+    public newTopic(title:string , content:string , uid:string) {
+      const today = new Date();
+      const refCollection = collection(this.firestore, 'Topic');
+      addDoc(refCollection, {
+        title: title,
+        content: content,
+        author: uid,
+        date: today,
+      }).then((docRef) => console.log('Written docID is:', docRef.id));
+    }
+
+    public newComment(content:string , uid:string , id:string) {
+        const today = new Date();
+        const refCollection = collection(this.firestore, 'Comment');
+        addDoc(refCollection, {
+            content: content,
+            author: uid,
+            date: today,
+            topicId: id,
+        }).then((docRef) => console.log('Written docID is:', docRef.id ))
+      }
 
 }

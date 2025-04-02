@@ -1,38 +1,36 @@
-
-
 <form #topicForm="ngForm" class="topic-form">
   <div class="form-group">
-    <label for="title">Titre :</label>
-    <input id="title" type="text" name="title" [(ngModel)]="title" required #titleRef="ngModel" class="form-control">
-    <div *ngIf="titleRef.invalid && titleRef.touched" class="error-message">
-      Le titre est requis !
-    </div>
+      <label for="title">Title:</label>
+      <input id="title" type="text" name="title" [(ngModel)]="title" required #titleRef="ngModel" class="form-control">
+      <div *ngIf="titleRef.invalid && titleRef.touched" class="error-message">
+          Title is required!
+      </div>
   </div>
 
   <div class="form-group">
-    <label for="content">Contenu :</label>
-    <textarea id="content" name="content" [(ngModel)]="content" required #contentRef="ngModel" class="form-control"></textarea>
-    <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
-      Le contenu est requis !
-    </div>
+      <label for="content">Content:</label>
+      <textarea id="content" name="content" [(ngModel)]="content" required #contentRef="ngModel" class="form-control"></textarea>
+      <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
+          Content is required!
+      </div>
   </div>
 
-  <button (click)="newTopic()" [disabled]="topicForm.invalid" class="submit-button">Créer un sujet</button>
+  <button (click)="newTopic()" [disabled]="topicForm.invalid" class="submit-button">Create Topic</button>
 </form>
 
 <table class="topic-table">
   <thead>
-    <tr>
-      <th>Titre</th>
-      <th>Date</th>
-      <th></th>
-    </tr>
+      <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th></th>
+      </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let topic of topics">
-      <td>{{topic.title}}</td>
-      <td>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</td>
-      <td><button [routerLink]="['/topic', topic.id]">Voir Détails</button></td>
-    </tr>
+      <tr *ngFor="let topic of topics">
+          <td>{{topic.title}}</td>
+          <td>{{topic.date.toDate()| date:'dd/MM/YYYY hh:mm:ss'}}</td>
+          <td><button [routerLink]="['/topic', topic.id]" class="details with-icon">View Details</button></td>
+      </tr>
   </tbody>
 </table>

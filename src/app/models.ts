@@ -3,10 +3,20 @@ import { Timestamp } from "@angular/fire/firestore";
 
 export interface Plant {
     id: number;
-    main_species_id:number;
+    main_species_id: number;
     common_name: string;
     scientific_name: string;
     image_url: string;
+    family?:{ name:string} ;
+    genus?:{ name:string}
+    species?:{ name:string}
+    growth_habit?: string;
+    native_status?: string;
+    flower_color?: string;
+    foliage_color?: string;
+    toxicity?: string;
+    medicinal?: boolean;
+    edible?: boolean;
 }
 
 export interface Greenhouse {
