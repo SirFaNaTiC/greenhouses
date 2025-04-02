@@ -3,7 +3,7 @@ import { FirebaseService } from '../../services/firebase.service';
 import { ApiService } from '../../services/api.service';
 import { Plant } from '../../app/models';
 import { switchMap, map } from 'rxjs/operators';
-import { forkJoin, Observable, of } from 'rxjs';
+import { forkJoin, Observable, of, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-favorite',
@@ -11,7 +11,7 @@ import { forkJoin, Observable, of } from 'rxjs';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit {
-  plants$: Observable<Plant[]> = of([]);
+  plants$ = new BehaviorSubject<Plant[]>([]);
 
   constructor(
     private firebaseService: FirebaseService,
@@ -22,31 +22,34 @@ export class FavoriteComponent implements OnInit {
     this.loadFavorites();
   }
 
-  removePlantFromFavorites(id: number): void {
-    this.firebaseService.removePlantFromFavorites(id);
+  removePlantFromFavorites(plant: Plant): void {
+    this.firebaseService.removePlantFromFavorites(plant.main_species_id);
+    this.ngOnInit()
   }
 
   loadFavorites(): void {
     this.firebaseService.getFavoris().pipe(
       switchMap(favoris => {
-        if (favoris?.plants && favoris.plants.length > 0) {
+        if (favoris?.plants?.length) {
           console.log('Favoris data:', favoris);
-          const plantObservables = favoris.plants
-            .map(plant => this.apiService.getPlantByID(plant.id));
-          
+          const plantObservables: Observable<Plant>[] = favoris.plants.map(plant =>
+            this.apiService.getPlantByID(plant.id)
+          );
+  
           return forkJoin(plantObservables).pipe(
-            map(plants => {
-              console.log('Plants fetched:', plants);
-              this.plants$ = of(plants.filter((plant): plant is Plant => plant != null));
-              return plants;
+            map((plants: (Plant | null)[]) => {
+              const filteredPlants: Plant[] = plants.filter((plant): plant is Plant => plant !== null);
+              console.log('Plants fetched:', filteredPlants);
+              return filteredPlants;
             })
           );
         }
-        return of([]);
+        return of<Plant[]>([]);
       })
     ).subscribe(
-      () => console.log('Completed loading favorites'),
+      plants => this.plants$.next(plants),
       error => console.error('Error loading favorites:', error)
     );
   }
+  
 }

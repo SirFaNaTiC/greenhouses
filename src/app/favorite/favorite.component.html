@@ -6,7 +6,7 @@
           <h3>{{ plant?.common_name || 'Unknown' }}</h3>
           <p>{{ plant?.scientific_name || 'No scientific name available' }}</p>
           <img *ngIf="plant?.image_url" [src]="plant.image_url" [alt]="plant?.common_name || 'Plant image'">
-          <button (click)="removePlantFromFavorites(plant.id)">Remove from favorites</button>
+          <button (click)="removePlantFromFavorites(plant)">Remove from favorites</button>
         </div>
       </ng-container>
     </div>
