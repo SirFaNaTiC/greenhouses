@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainPageComponent } from './main-page.component';
+import { GreenhousesComponent } from './greenhouses.component';
 
-describe('MainPageComponent', () => {
-  let component: MainPageComponent;
-  let fixture: ComponentFixture<MainPageComponent>;
+describe('GreenhousesComponent', () => {
+  let component: GreenhousesComponent;
+  let fixture: ComponentFixture<GreenhousesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MainPageComponent]
+      declarations: [GreenhousesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MainPageComponent);
+    fixture = TestBed.createComponent(GreenhousesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

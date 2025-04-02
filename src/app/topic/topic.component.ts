@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Topic, Comment } from '../models';
-import { ActivatedRoute } from '@angular/router';
-import { addDoc, collection, doc, Firestore, onSnapshot, query, where } from '@angular/fire/firestore';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { addDoc, collection, deleteDoc, doc, Firestore, onSnapshot, query, where } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
 
 @Component({
@@ -10,12 +10,12 @@ import { Auth } from '@angular/fire/auth';
   styleUrl: './topic.component.css',
 })
 export class TopicComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
   public topic: Topic | undefined;
   public id: string = '';
   private db = inject(Firestore);
   public content: string = '';
-  private auth = inject(Auth);
+  public auth = inject(Auth);
   public comments: Comment[] = [];
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -31,8 +31,12 @@ export class TopicComponent {
 
     const refCollection = collection(this.db, 'Comment');
     const q = query(refCollection, where('topicId', '==', this.id));
+
     onSnapshot(q, (comments) => {
-      this.comments = comments.docs.map((doc) => doc.data() as Comment);
+      this.comments = comments.docs.map((doc) => ({
+        id: doc.id,
+      ...(doc.data() as Omit<Comment, 'id'>),
+       }));
       console.log(comments);
     });
   }
@@ -47,4 +51,17 @@ export class TopicComponent {
     }).then((docRef) => console.log('Written docID is:', docRef.id ))
   }
 
+  public deleteTopic() {
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      console.log(this.id);
+      deleteDoc(doc(this.db, 'Topic', this.id));
+      this.router.navigate(['/topics']);
+    });
+  }
+
+  public deleteComment(id: string) {
+    console.log(id);
+    deleteDoc(doc(this.db, 'Comment', id));
+  }
 }

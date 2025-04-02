@@ -5,15 +5,14 @@
         <div *ngIf="isLoggedIn">
             <div><button (click)="logOut()">Déconnexion</button></div>
         </div>
-        <div><button [routerLink]="'/main-page'">Accueil</button></div>
     </div>
 
     </div>
     
     <nav>
         <ul>
-            <li><a [routerLink]="'/greenhouses'">Greenhouse</a></li>
-            <li><a [routerLink]="'/favorite'">Favorite</a></li>
+            <li><a [routerLink]="'/greenhouses'">Greenhouses</a></li>
+            <li><a [routerLink]="'/favorite'">Favorites</a></li>
             <li><a [routerLink]="'/plants'">Plants</a></li>
             <li><a [routerLink]="'/topics'">Topics</a></li>
         </ul>

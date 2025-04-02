@@ -1,0 +1,36 @@
+<div class="container">
+    <h2>Modifier le Topic</h2>
+  
+    <form (ngSubmit)="editTopic()" #topicForm="ngForm">
+      <div class="form-group">
+        <label for="title">Titre :</label>
+        <input 
+          id="title" 
+          type="text" 
+          [(ngModel)]="title" 
+          name="title" 
+          required
+          class="form-control"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="content">Contenu :</label>
+        <textarea 
+          id="content" 
+          [(ngModel)]="content" 
+          name="content" 
+          required
+          class="form-control"
+        ></textarea>
+      </div>
+  
+      <button type="submit" [disabled]="topicForm.invalid" class="btn btn-primary">
+        Enregistrer les modifications
+      </button>
+      <button type="button" (click)="router.navigate(['/topics'])" class="btn btn-secondary">
+        Annuler
+      </button>
+    </form>
+  </div>
+  

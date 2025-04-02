@@ -1,14 +1,24 @@
-
 <div *ngIf="End; else affichage">
     <mat-spinner></mat-spinner>
 </div>
 <ng-template #affichage>
     <div class="gallery"> 
         <div class="image-card" *ngFor="let item of plants">
-            <img [src]="item.image_url">
-            <div class="common-name">{{ item.common_name }}</div>
-            <div class="scientific-name">{{ item.scientific_name }}</div>
-            <button [routerLink]="['/infosPlantes', item.id]">Infos</button>
+            <div [routerLink]="['/infosPlantes', item.id]">
+                <img [src]="item.image_url">
+                <div class="common-name">{{ item.common_name }}</div>
+                <div class="scientific-name">{{ item.scientific_name }}</div>
+            </div>
+            <mat-form-field>
+                <mat-label>Select Greenhouse</mat-label>
+                <mat-select [(ngModel)]="selectedValue" name="greenhouse">
+                    @for (greenhouse of greenhouses; track greenhouse) {
+                        <mat-option [value]="greenhouse.name">{{greenhouse.selectedName}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <button (click)="addPlantToGreenhouse(item.id)">Add to Greenhouse</button>
+            <button (click)="addPlantToFavorite(item.id)">Add to Favorites</button>
         </div> 
     </div>
 </ng-template>
