@@ -100,7 +100,7 @@ export class FirebaseService {
         );
     }
 
-    public addPlantToGreenhouse(name: string, id: number): void {
+    public addPlantToGreenhouse(name: string, id: number){
         user(this.auths).pipe(
             switchMap(authUser => {
                 if (!authUser?.uid) {

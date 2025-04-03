@@ -16,7 +16,7 @@ export class InscriptionComponent {
   public loggin(email: string,password : string){
     this.AuthService.createUser(email, password).then((userCredential) => {
       userCredential.user;
-      this.router.navigate(['/main-page']);
+      this.router.navigate(['/greenhouses'])
       })
       .catch((error) => {
           const errorCode = error.code;

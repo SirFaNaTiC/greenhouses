@@ -25,7 +25,7 @@ export class ConnectionComponent {
   public connection(email: string,password : string){
     this.AuthService.verifyuser(email, password).then(user=>{
       if (user){
-        this.router.navigate(['/main-page'])
+        this.router.navigate(['/greenhouses'])
         console.log('Utilisateur : ',user)
       }
     })
