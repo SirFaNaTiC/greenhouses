@@ -43,27 +43,27 @@ export class InfosPlantesComponent implements OnInit{
 
     description += plant.growth_habit ? `It grows in the form of ${plant.growth_habit}. ` : `Its growth habit is not specified, which might mean it has no specific form. `;
 
-    // Reverse or specify the native status
+
     description += plant.native_status ? `It is mainly found in ${plant.native_status}. ` : `Its native status is unknown, it could be cultivated in different regions. `;
 
-    // Reverse or specify flower and foliage colors
+
     if (plant.flower_color != "Not specified") {
         description += `Its flowers are ${plant.flower_color || 'unspecified'} in color and its foliage is ${plant.foliage_color || 'unspecified'}. `;
     } else {
         description += `Information on flower and foliage color is missing. `;
     }
 
-    // Reverse or specify toxicity
+
     if (plant.toxicity != "Not specified") {
         description += `Warning, this plant is considered ${plant.toxicity}. `;
     } else {
         description += `There is no information on toxicity, it could be safe or untested. `;
     }
 
-    // Medicinal use
+
     description += plant.medicinal ? `It is used for medicinal purposes. ` : `It has no known medicinal use, but this does not mean it could not have any. `;
 
-    // Edibility
+
     description += plant.edible ? `It is also edible.` : `It is not considered edible, but could be under certain circumstances.`;
 
     return description;

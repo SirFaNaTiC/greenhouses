@@ -99,7 +99,7 @@ button[routerLink]:hover {
     transform: scale(1.1);
 }
 
-/* Partie inférieure */
+
 .bottom-part {
     text-align: center;
     margin-top: 20px;
@@ -121,7 +121,7 @@ button[routerLink]:hover {
     background-color: #3e8e41;
 }
 
-/* Messages d'erreur */
+
 .error-message, .erreur {
     color: #f44336;
     font-size: 14px;

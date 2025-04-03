@@ -1,4 +1,4 @@
-/* Global styles */
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -80,11 +80,11 @@ label {
 
 .submit-button:hover:not(:disabled) {
   background: #45a049 ;
-  transform: scale(1.05); /* Légère augmentation de taille */
+  transform: scale(1.05);
   box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
 }
 
-/* Table styling */
+
 .topic-table {
   width: 80%;
   margin: 20px auto;
@@ -119,7 +119,7 @@ label {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Style actif/focus */
+
 .details:active,
 .details:focus {
   outline: none;

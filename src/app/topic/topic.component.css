@@ -1,4 +1,4 @@
-/* Style général */
+
 .h1 {
     color: #289986;
 }
@@ -16,55 +16,55 @@ margin-bottom: 30px;
 }
 
 .title-group h1 {
-    font-size: 2.5rem; /* Taille augmentée (environ 40px) */
-    margin: 0; /* Supprime les marges par défaut */
-    line-height: 1.2; /* Ajuste l'interligne */
+    font-size: 2.5rem; 
+    margin: 0; 
+    line-height: 1.2; 
   }
 
 .title-container {
 display: flex;
-justify-content: space-between; /* Met le titre à gauche et les boutons à droite */
-align-items: center; /* Aligne verticalement au centre */
-margin-bottom: 10px; /* Espace sous la ligne titre + boutons */
+justify-content: space-between; 
+align-items: center; 
+margin-bottom: 10px; 
 }
 
 .topic-actions {
 display: flex;
-gap: 10px !important; /* Espace entre les boutons */
+gap: 10px !important; 
 }
 
 .topic-actions button {
-margin-right: 10px; /* Espace à droite de chaque bouton */
+margin-right: 10px; 
 }
 
 .topic-actions button:last-child {
-margin-right: 0; /* Pas de marge sur le dernier bouton */
+margin-right: 0;
 }
 
 .topic-actions button:last-child:hover{
     background: #45a049;
-    transform: scale(1.05); /* Légère augmentation de taille */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombre portée */
+    transform: scale(1.05); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
 }
 
 .topic-actions button:first-child:hover{
     background: #c82333;
-    transform: scale(1.05); /* Légère augmentation de taille */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Ombre portée */
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .title-group {
 display: flex;
 flex-direction: column;
-gap: 0; /* Supprime tout espace entre les éléments */
-line-height: 1.2; /* Réduit l'interligne par défaut */
+gap: 0; 
+line-height: 1.2;
 }
 
 .topic-date {
 font-size: 0.8em;
 color: #666;
-margin: 0 !important; /* Supprime les marges par défaut */
-padding: 0!important; /* Supprime les paddings par défaut */
+margin: 0 !important; 
+padding: 0!important; 
 }
 
 div:first-child p {
@@ -108,7 +108,7 @@ button {
 
 .Supprimer_Comm:hover {
     background-color: #c82333 !important;
-    transform: scale(1.05); /* Légère augmentation de taille */
+    transform: scale(1.05); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
   }
 
@@ -162,7 +162,7 @@ transition: background-color 0.3s ease;
 
 .submit-button:hover:not(:disabled) {
     background-color: #45a049;
-    transform: scale(1.05); /* Légère augmentation de taille */
+    transform: scale(1.05); 
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
@@ -171,7 +171,6 @@ opacity: 0.6;
 cursor: not-allowed;
 }
 
-/* Style du tableau des commentaires */
 .comment-table {
 width: 100%;
 border-collapse: collapse;
@@ -195,7 +194,7 @@ padding: 12px 15px;
 border-bottom: 1px solid #eee;
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
 .comment-table {
 display: block;

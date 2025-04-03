@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit{
         } else {
           this.isLoggedIn = false;
         }
-        //handle user state changes here. Note, that user will be null if there is no currently logged in user.
       console.log(aUser);
     })
     }

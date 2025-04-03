@@ -41,7 +41,6 @@ export class PlantsComponent implements OnInit {
   ngOnInit() {
     this.ApiService.getPlantAll().subscribe(plant_temp => {
       this.plants = plant_temp;
-      console.log(this.plants);
     });
     this.End = false;
 

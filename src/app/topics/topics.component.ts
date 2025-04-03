@@ -26,8 +26,6 @@ export class TopicsComponent implements OnInit {
   public topicID = 'zJGFiHIzkQl3BCncTe7X';
   public topics: Topic[] = [];
 
-  
-
   public ngOnInit() {
     const refCollection = collection(this.firestore, 'Topic');
     onSnapshot(refCollection, (topics) => {

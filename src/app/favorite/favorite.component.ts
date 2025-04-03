@@ -34,7 +34,6 @@ export class FavoriteComponent implements OnInit {
     this.firebaseService.getFavoris().pipe(
       switchMap(favoris => {
         if (favoris?.plants?.length) {
-          console.log('Favoris data:', favoris);
           const plantObservables: Observable<Plant>[] = favoris.plants.map(plant =>
             this.apiService.getPlantByID(plant.id)
           );
@@ -42,7 +41,6 @@ export class FavoriteComponent implements OnInit {
           return forkJoin(plantObservables).pipe(
             map((plants: (Plant | null)[]) => {
               const filteredPlants: Plant[] = plants.filter((plant): plant is Plant => plant !== null);
-              console.log('Plants fetched:', filteredPlants);
               return filteredPlants;
             })
           );

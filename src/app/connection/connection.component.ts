@@ -26,7 +26,7 @@ export class ConnectionComponent {
     this.AuthService.verifyuser(email, password).then(user=>{
       if (user){
         this.router.navigate(['/greenhouses'])
-        console.log('Utilisateur : ',user)
+
       }
     })
     .catch((error) => {

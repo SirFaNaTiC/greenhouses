@@ -92,7 +92,7 @@ button[routerLink]:hover {
 }
 
 .auth-buttons img {
-    width: 40px; /* Taille réduite du logo */
+    width: 40px;
     height: 40px;
     cursor: pointer;
     transition: transform 0.2s;
@@ -102,7 +102,7 @@ button[routerLink]:hover {
     transform: scale(1.1);
 }
 
-/* Style pour la partie inférieure */
+
 .bottom-part {
     text-align: center;
     margin-top: 20px;
@@ -117,13 +117,13 @@ button[routerLink]:hover {
     cursor: pointer;
 }
 
-/* Message d'erreur */
+
 .erreur {
     color: red;
     margin: 10px 0;
 }
 
-/* Section Google */
+
 .google-auth-section {
     text-align: center;
     margin: 25px 0 15px;
@@ -148,7 +148,7 @@ button[routerLink]:hover {
     transform: scale(1.1);
 }
 
-/* Partie inférieure */
+
 .bottom-part {
     text-align: center;
     margin-top: 20px;
@@ -170,7 +170,7 @@ button[routerLink]:hover {
     background-color: #3e8e41;
 }
 
-/* Messages d'erreur */
+
 .error-message, .erreur {
     color: #f44336;
     font-size: 14px;

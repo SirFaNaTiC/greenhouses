@@ -85,7 +85,7 @@ mat-spinner {
   display: block;
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
   .plants-grid {
       flex-direction: column;
