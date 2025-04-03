@@ -122,7 +122,8 @@ export class FirebaseService {
         ).subscribe();
     }
 
-    public addPlantToFavorites(id: number , addFavorite:boolean) {
+  
+    public addPlantToFavorites(id: number ) {
         user(this.auths).pipe(
             switchMap(authUser => {
                 if (!authUser?.uid) {

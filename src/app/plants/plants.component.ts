@@ -17,7 +17,6 @@ export class PlantsComponent implements OnInit {
   greenhouses: GreenhouseSelected[] = [];
   selectedValue: string = '';
   private firestore = inject(Firestore);
-  addFavorite:boolean = false ;
 
   showPopup = false;
   popupText = '';
@@ -33,12 +32,7 @@ export class PlantsComponent implements OnInit {
       }
     } else {
       this.addPlantToFavorite(id);
-      if (!this.addFavorite){
-        this.popupText = 'Plant already in favorite';
-      }
-      else{
-        this.popupText = 'Plant added to favorites!';
-      }
+      this.popupText = 'Plant added to favorites!';
     }
     this.showPopup = true;
     setTimeout(() => this.showPopup = false, 3000);
@@ -66,7 +60,7 @@ export class PlantsComponent implements OnInit {
   }
 
   public addPlantToFavorite(id: number): void {
-    this.firebasesService.addPlantToFavorites(id , this.addFavorite);
+    this.firebasesService.addPlantToFavorites(id);
 }
 
 
