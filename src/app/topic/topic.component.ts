@@ -39,7 +39,8 @@ export class TopicComponent implements OnInit {
       this.comments = comments.docs.map((doc) => ({
         id: doc.id,
       ...(doc.data() as Omit<Comment, 'id'>),
-       }));
+       }))
+       .sort((a, b) => b.date.toMillis() - a.date.toMillis());
       console.log(comments);
     });
   }

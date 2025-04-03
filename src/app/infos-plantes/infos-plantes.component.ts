@@ -23,12 +23,12 @@ export class InfosPlantesComponent implements OnInit{
       this.ApiService.getPlantByID(this.id).subscribe(plant => {
         this.currentPlant = {
           ...plant,
-          family: { name: plant.family?.name || "Non spécifié" },
-          genus: { name: plant.genus?.name || "Non spécifié" },
-          species: { name: plant.species?.name || "Non spécifié" },
-          foliage_color: plant.foliage_color || "Non spécifié",
-          flower_color: plant.flower_color || "Non spécifié",
-          toxicity: plant.toxicity || "Non spécifié",
+          family: { name: plant.family?.name || "Not specified" },
+          genus: { name: plant.genus?.name || "Not specified" },
+          species: { name: plant.species?.name || "Not specified" },
+          foliage_color: plant.foliage_color || "Not specified",
+          flower_color: plant.flower_color || "Not specified",
+          toxicity: plant.toxicity || "Not specified",
           edible: plant.edible,
           medicinal: plant.medicinal
         };
