@@ -1,25 +1,33 @@
 <form #greenhousesForms="ngForm" class="comment-form">
-  <div class="form-group">
-      <label for="content">Content:</label>
-      <textarea id="content" name="content" [(ngModel)]="name" required #contentRef="ngModel" class="form-control"></textarea>
-      <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
-          Content is required!
-      </div>
-  </div>
-  <button (click)="createGreenhouse()" [disabled]="greenhousesForms.invalid" class="submit-button">Create Greenhouse</button>
-</form>
-
-<table class="Greenhouses-table">
-  <thead>
-      <tr>
-          <th>Greenhouse Name</th>
-          <th></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let greenhouse of greenhouses">
-          <td><button [routerLink]="['/personal-greenhouses', greenhouse.name]" class="greenhouse">{{ greenhouse.name }}</button></td>
-          <td><button (click)="deleteGreenhouse(greenhouse.name)" class="suppr">Delete</button></td>
-      </tr>
-  </tbody>
-</table>
+    <div class="form-group">
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" [(ngModel)]="name" required #contentRef="ngModel" class="form-control"></textarea>
+        <div *ngIf="contentRef.invalid && contentRef.touched" class="error-message">
+            Content is required!
+        </div>
+    </div>
+    <button (click)="createGreenhouse()" [disabled]="greenhousesForms.invalid" class="submit-button">Create Greenhouse</button>
+  </form>
+  
+  <table class="Greenhouses-table" *ngIf="greenhouses.length > 0; else noGreenhouses">
+    <thead>
+        <tr>
+            <th>Greenhouse Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let greenhouse of greenhouses">
+            <td><button [routerLink]="['/personal-greenhouses', greenhouse.name]" class="greenhouse">{{ greenhouse.name }}</button></td>
+            <td><button (click)="deleteGreenhouse(greenhouse.name)" class="suppr">Delete</button></td>
+        </tr>
+    </tbody>
+  </table>
+  
+  <!-- Template du message si aucune serre n'est créée -->
+  <ng-template #noGreenhouses>
+    <div class="empty-message">
+      <p>You haven't created any greenhouses yet. Create one now!  </p>
+    </div>
+  </ng-template>
+  
