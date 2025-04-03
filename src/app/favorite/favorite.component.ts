@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { Plant } from '../../app/models';
 import { switchMap, map } from 'rxjs/operators';
 import { forkJoin, Observable, of, BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorite',
@@ -15,7 +16,8 @@ export class FavoriteComponent implements OnInit {
 
   constructor(
     private firebaseService: FirebaseService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,7 +26,8 @@ export class FavoriteComponent implements OnInit {
 
   removePlantFromFavorites(plant: Plant): void {
     this.firebaseService.removePlantFromFavorites(plant.main_species_id);
-    this.ngOnInit()
+    this.ngOnInit();
+    this.router.navigate(['/favorite']);
   }
 
   loadFavorites(): void {

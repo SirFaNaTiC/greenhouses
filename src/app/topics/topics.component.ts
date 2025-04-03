@@ -31,11 +31,13 @@ export class TopicsComponent implements OnInit {
   public ngOnInit() {
     const refCollection = collection(this.firestore, 'Topic');
     onSnapshot(refCollection, (topics) => {
-      this.topics = topics.docs.map((doc) => ({
-        id: doc.id,
-        ...(doc.data() as Omit<Topic, 'id'>),
-      }));
-    });
+      this.topics = topics.docs
+        .map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Omit<Topic, 'id'>),
+        }))
+        .sort((a, b) => b.date.toMillis() - a.date.toMillis());
+    });    
   }
 
   newTopic() {
