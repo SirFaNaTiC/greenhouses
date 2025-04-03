@@ -1,15 +1,15 @@
 <form>
-    <label>Email :</label>
+    <label>Email:</label>
     <input type="email" [(ngModel)]="email" name="nom">
     <br>
-    <label>Password :</label>
+    <label>Password:</label>
     <input type="password" [(ngModel)]="password" name="email">
     <br>
-    <button type="submit" (click)="loggin(email, password)" [routerLink]="'/main-page'">Inscription</button>
+    <button type="submit" (click)="loggin(email, password)" [routerLink]="'/main-page'">Sign up</button>
     <p class="erreur">{{message}}<br></p>
     
     <div class="google-auth-section">
-        <p class="google-auth-text">Inscription via Google</p>
+        <p class="google-auth-text">Sign up with Google</p>
         <div class="auth-buttons">
             <img src="/assets/google-icon.png" alt="Google" (click)="signInWithGoogle()">
         </div>
@@ -17,6 +17,6 @@
 </form>
 
 <div class="bottom-part">
-    <p>Déjà inscrit ?</p>
-    <button [routerLink]="'/connection'">Connexion</button>
+    <p>Already registered?</p>
+    <button [routerLink]="'/connection'">Log in</button>
 </div>

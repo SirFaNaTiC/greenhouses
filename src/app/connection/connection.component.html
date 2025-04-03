@@ -1,20 +1,20 @@
 <div class="connexion">
     <form>
-        <label>Email :</label>
+        <label>Email:</label>
         <input type="email" [(ngModel)]="email" name="nom" #emailField="ngModel">
         <br>
-        <label>Password :</label>
+        <label>Password:</label>
         <input type="password" [(ngModel)]="password" name="email">
         <br>
-        <button type="submit" (click)="connection(email, password)">Se connecter</button>
+        <button type="submit" (click)="connection(email, password)">Log in</button>
         
         @if(emailField.errors?.['email'] && emailField.touched){
-            <p class="error-message">Email Invalide</p>
+            <p class="error-message">Invalid Email</p>
         }
         <p class="erreur">{{message}}<br></p>
         
         <div class="google-auth-section">
-            <p class="google-auth-text">Connexion via Google</p>
+            <p class="google-auth-text">Log in with Google</p>
             <div class="auth-buttons">
                 <img src="/assets/google-icon.png" alt="Google" (click)="signInWithGoogle()">
             </div>
@@ -22,7 +22,7 @@
     </form>
     
     <div class="bottom-part">
-        <p>Pas encore inscrit ?</p>
-        <button [routerLink]="'/inscription'">Inscription</button>
+        <p>Not registered yet?</p>
+        <button [routerLink]="'/inscription'">Sign up</button>
     </div>
 </div>

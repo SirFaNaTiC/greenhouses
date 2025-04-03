@@ -1,23 +1,26 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Topic, Comment } from '../models';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { addDoc, collection, deleteDoc, doc, Firestore, onSnapshot, query, where } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-topic',
   templateUrl: './topic.component.html',
   styleUrl: './topic.component.css',
 })
-export class TopicComponent {
-  constructor(private route: ActivatedRoute, private router: Router) {}
+export class TopicComponent implements OnInit {
+
+  constructor(private route: ActivatedRoute, private router: Router , private firebaseService:FirebaseService) {}
+
   public topic: Topic | undefined;
   public id: string = '';
   private db = inject(Firestore);
   public content: string = '';
   public auth = inject(Auth);
   public comments: Comment[] = [];
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
       console.log(this.id);
@@ -40,28 +43,23 @@ export class TopicComponent {
       console.log(comments);
     });
   }
-  public newComment() {
-    const today = new Date();
-    const refCollection = collection(this.db, 'Comment');
-    addDoc(refCollection, {
-        content: this.content,
-        author: this.auth.currentUser?.uid,
-        date: today,
-        topicId: this.id,
-    }).then((docRef) => console.log('Written docID is:', docRef.id ))
+  
+  newComment() {
+    const uid = this.auth.currentUser?.uid;
+    if (uid) {
+      this.firebaseService.newComment( this.content, uid , this.id);
+    }
   }
 
   public deleteTopic() {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
-      console.log(this.id);
       deleteDoc(doc(this.db, 'Topic', this.id));
       this.router.navigate(['/topics']);
     });
   }
 
   public deleteComment(id: string) {
-    console.log(id);
     deleteDoc(doc(this.db, 'Comment', id));
   }
 }

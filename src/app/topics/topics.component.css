@@ -26,6 +26,7 @@ button {
   margin-top: 10px;
 }
 
+
 /* Form styling */
 .topic-form {
   width: 80%;
@@ -78,7 +79,9 @@ label {
 }
 
 .submit-button:hover:not(:disabled) {
-  background-color: #45a049;
+  background: #45a049 ;
+  transform: scale(1.05); /* Légère augmentation de taille */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
 }
 
 /* Table styling */
@@ -107,4 +110,18 @@ label {
 
 .topic-table tr:hover {
   background-color: #f1f1f1;
+}
+
+.details:hover {
+  background-color: #45a049; 
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Style actif/focus */
+.details:active,
+.details:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108,117,125,0.3);
 }
