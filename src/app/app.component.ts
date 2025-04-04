@@ -4,6 +4,7 @@ import { Plant } from './models';
 import { Auth, authState, getAuth, User } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
 import { FirebaseService } from '../services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ export class AppComponent implements OnInit{
   authState$ = authState(this.auth);
   authStateSubscription?: Subscription ;
 
-  constructor(private firebase:FirebaseService) {}
+  constructor(private firebase:FirebaseService , private router : Router) {}
   
   public ngOnInit() {
     this.authStateSubscription = this.authState$.subscribe((aUser: User | null) => {
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit{
     });
     this.firebase.checkAndCreateUser();
     this.firebase.CheckAndCreateFavoris();
+    this.router.navigate(['/plants']);
   }
 
 }

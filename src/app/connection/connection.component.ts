@@ -40,7 +40,7 @@ export class ConnectionComponent {
   async signInWithGoogle() {
     try {
       await this.AuthService.signInWithGoogle();
-      this.router.navigate(['/greenhouses']);
+      this.router.navigate(['/plants']);
     } catch (error: any) {
       this.handleError(error);
     }

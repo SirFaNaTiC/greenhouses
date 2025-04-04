@@ -16,7 +16,7 @@ export class InscriptionComponent {
   public loggin(email: string,password : string){
     this.AuthService.createUser(email, password).then((userCredential) => {
       userCredential.user;
-      this.router.navigate(['/greenhouses'])
+      this.router.navigate(['/plants'])
       })
       .catch((error) => {
           const errorCode = error.code;
@@ -29,7 +29,7 @@ export class InscriptionComponent {
   async signInWithGoogle() {
     try {
       await this.AuthService.signInWithGoogle();
-      this.router.navigate(['/greenhouses']);
+      this.router.navigate(['/plants']);
     } catch (error: any) {
       this.handleError(error);
     }
